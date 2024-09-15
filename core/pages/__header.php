@@ -15,9 +15,11 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,900">
     <link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css">
+
     <!-- Additional tags here -->
     <link rel="stylesheet" href="./gui/css/style.css">
     <link rel="stylesheet" href="./gui/css/contact.css">
+
     <link rel="stylesheet" href="./gui/css/header.css">
 </head>
 
@@ -32,11 +34,11 @@
             <label for="menu-icon"></label>
             <nav class="nav">
                 <ul class="pt-5">
-                    <li><a href="index.php">Home</a></li>
-                    <li><a href="gui/member.php">Member</a></li>
-                    <li><a href="gui/Gallery.php">Gallery</a></li>
-                    <li><a href="gui/Contact.php">Contact</a></li>
-                    <li><a href="gui/alumni.php">Alumni TE LINKS</a></li>
+                    <li><a href="./Home">Home</a></li>
+                    <li><a href="./Member">Member</a></li>
+                    <li><a href="./Gallery">Gallery</a></li>
+                    <li><a href="./Contact">Contact</a></li>
+                    <li><a href="./Alumni">Alumni TE LINKS</a></li>
                 </ul>
             </nav>
         </section>

@@ -4,6 +4,9 @@ global $sql;
 $query = $sql->query('SELECT * FROM images');
 $images = $query->fetch_assoc();
 ?>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css">
+    <link rel="stylesheet" href="./gui/css/gallery.css">
 <main>
     <div class="container" data-aos="fade-up" data-aos-duration="1000">
         <div class="row pt-5">
@@ -36,3 +39,11 @@ $images = $query->fetch_assoc();
         </div>
     </div>
 </main>
+
+   <!-- Include Isotope -->
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.6/isotope.pkgd.min.js"></script>
+    <!-- Include Magnific Popup -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js"></script>
+    <!-- Include Fancybox -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js"></script>
+<script src="./assets/js/gallery.js"></script>
