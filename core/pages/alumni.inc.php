@@ -41,7 +41,7 @@ while ($row = $sql->fetch_assoc($query)) {
                 <?php foreach ($members as $member): ?>
                     <div class="col-md-3">
                         <div class="card member-card">
-                            <img src="./admin/<?php echo htmlspecialchars($member['profile_picture']); ?>" class="profile-img card-img-top" alt="<?php echo htmlspecialchars($member['name']); ?>">
+                            <img src="./<?php echo htmlspecialchars($member['profile_picture']); ?>" class="profile-img card-img-top" alt="<?php echo htmlspecialchars($member['name']); ?>">
                             <div class="member-info card-body">
                                 <h5 class="card-title"><?php echo htmlspecialchars($member['name']); ?></h5>
                                 <p class="card-text"><?php echo "Former " . htmlspecialchars($member['position']); ?></p>
