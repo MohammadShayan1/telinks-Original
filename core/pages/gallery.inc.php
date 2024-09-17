@@ -11,7 +11,7 @@ $images = $query->fetch_assoc();
     <div class="container" data-aos="fade-up" data-aos-duration="1000">
         <div class="row pt-5">
             <div class="col-lg-12 text-center my-2">
-                <h4>Gallery</h4>
+                <h4>Events</h4>
             </div>
         </div>
         <div class="portfolio-menu mt-2 mb-4">

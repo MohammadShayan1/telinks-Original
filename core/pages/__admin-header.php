@@ -3,7 +3,7 @@ session_start();
 
 // Check if the user is logged in
 if (!isset($_SESSION['admin_logged_in']) || $_SESSION['admin_logged_in'] !== true) {
-    header("Location: index.php");
+    header("Location: ./home");
     exit;
 }
 
@@ -15,7 +15,7 @@ if (isset($_SESSION['last_activity']) && (time() - $_SESSION['last_activity']) >
     // Last request was more than 15 minutes ago, so log out the user
     session_unset();
     session_destroy();
-    header("Location: index.php");
+    header("Location: ./admin-home");
     exit;
 }
 
@@ -28,7 +28,7 @@ $_SESSION['last_activity'] = time();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?= $this->title() ?></title>
-    <link rel="shortcut icon" href="../assets/imgs/telinkslogo.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="./gui/imgs/telinkslogo.ico" type="image/x-icon">
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
@@ -118,7 +118,7 @@ $_SESSION['last_activity'] = time();
                 <div class="position-sticky pt-3">
                     <ul class="nav flex-column">
                         <li class="nav-item">
-                            <a class="nav-link " aria-current="page" href="admin_dashboard.php">
+                            <a class="nav-link " aria-current="page" href="./admin-dashboard">
                                 Dashboard
                             </a>
                         </li>
@@ -147,5 +147,5 @@ $_SESSION['last_activity'] = time();
                 <div class="container mt-4">
                     <img src="../assets/imgs/telinkslogo.png" alt="Logo">
                     <h2><?php echo 'Welcome, ' . $_SESSION['username']; ?></h2>
-                    <a href="admin_logout.php" class="logout-link">Logout</a>
+                    <a href="./admin-logout" class="logout-link">Logout</a>
                     <!-- Your additional content here -->

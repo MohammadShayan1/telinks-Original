@@ -22,5 +22,5 @@
 
     $page->buildPage();
     
-    $sql->__destruct();
+
 ?>
