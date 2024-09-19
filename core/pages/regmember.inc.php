@@ -41,10 +41,22 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['add_member'])) {
     }
 }
 
-// Handle deleting a member
+// Handle deleting a member and their profile picture
 if (isset($_GET['delete_id'])) {
     $delete_id = intval($_GET['delete_id']); // Sanitize the input
+    
+    // Fetch the profile picture path before deleting the member
+    $result = $sql->query("SELECT profile_picture FROM members WHERE id = '$delete_id'");
+    $member = $sql->fetch_assoc($result);
+
+    if ($member && !empty($member['profile_picture']) && file_exists($member['profile_picture'])) {
+        // Delete the profile picture file from the server
+        unlink($member['profile_picture']);
+    }
+
+    // Delete the member from the database
     $stmt = $sql->query("DELETE FROM members WHERE id = '$delete_id'");
+    
     if ($stmt) {
         $message = "<div class='alert alert-success'>Member deleted successfully!</div>";
     } else {
@@ -120,7 +132,7 @@ $result = $sql->query("SELECT * FROM members");
             </tr>
         </thead>
         <tbody>
-            <?php while ($row = $result->fetch_assoc()): ?>
+            <?php while ($row = $sql->fetch_assoc($result)): ?>
             <tr>
                 <td><?php echo $row['name']; ?></td>
                 <td><?php echo $row['position']; ?></td>
@@ -128,7 +140,7 @@ $result = $sql->query("SELECT * FROM members");
                 <td><a href="<?php echo $row['linkedin']; ?>" target="_blank">LinkedIn</a></td>
                 <td><img src="<?php echo $row['profile_picture']; ?>" width="50" height="50"></td>
                 <td>
-                    <a href="edit_member.php?id=<?php echo $row['id']; ?>" class="btn btn-warning btn-sm">Edit</a>
+                    <a href="edit_member?id=<?php echo $row['id']; ?>" class="btn btn-warning btn-sm">Edit</a>
                     <a href="?delete_id=<?php echo $row['id']; ?>" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this member?')">Delete</a>
                 </td>
             </tr>

@@ -1,15 +1,13 @@
 <?php
 class sql
 {
-    private
-        $conn,
-        $res;
+    private $conn;
+    private $res;
 
     public function __construct()
     {
         $this->conn = null;
         $this->res = null;
-
         $this->connect();
     }
 
@@ -18,16 +16,12 @@ class sql
         if ($this->conn != null) {
             return true;
         }
-        global 
-            $host,
-            $user,
-            $pass,
-            $db;
+        global $host, $user, $pass, $db;
 
         try {
             $this->conn = new \mysqli($host, $user, $pass, $db);
         } catch (Exception $e) {
-            exit("<b>Error while connecting to the database server</b>");
+            exit("<b>Error while connecting to the database server:</b> " . $e->getMessage());
         }
     }
 
@@ -41,14 +35,7 @@ class sql
             $this->res = $this->conn->query($str);
             return $this->res;
         } catch (Exception $e) {
-            global $debug;
-            if ($this->conn->error) {
-                if ($debug) {
-                    echo("MySQL query failed:<br /><b><{$this->conn->errno}></b> {$this->conn->error}");
-                } else {
-                    echo("<b>Failed to execute query</b>");
-                }
-            }
+            echo "<b>MySQL query failed:</b> " . $this->conn->error;
         }
     }
 
@@ -59,10 +46,9 @@ class sql
 
     public function insertId()
     {
-        return $this->conn->insert_id; 
+        return $this->conn->insert_id;
     }
 
-    // Add this method to fetch a single row
     public function fetch_assoc($result = null)
     {
         if ($result === null) {
@@ -71,13 +57,18 @@ class sql
         return $result ? $result->fetch_assoc() : null;
     }
 
-    // Add this method to get the number of rows
     public function num_rows($result = null)
     {
         if ($result === null) {
             $result = $this->res;
         }
         return $result ? $result->num_rows : 0;
+    }
+
+    // Getter method to access the last error
+    public function getError()
+    {
+        return $this->conn ? $this->conn->error : null;
     }
 
     public function __destruct()
