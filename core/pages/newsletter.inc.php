@@ -2,6 +2,11 @@
 // Use global sql class object
 global $sql;
 
+if(isset($_GET["download"]))
+{
+    $sql->downloadNewsletterCSV();
+}
+
 // Handle delete request
 if (isset($_GET['delete_id'])) {
     $delete_id = intval($_GET['delete_id']); // Sanitize the input to ensure it's an integer
@@ -51,5 +56,5 @@ $result = $sql->query("SELECT * FROM newsletter");
     </tbody>
 </table>
 
-<a href="./pages/newslettercsv.php" class="btn btn-primary">Download CSV</a>
+<a href="./newslettercsv?download=true" class="btn btn-primary">Download CSV</a>
 

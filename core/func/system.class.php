@@ -71,6 +71,38 @@ class sql
         return $this->conn ? $this->conn->error : null;
     }
 
+
+    function downloadNewsletterCSV()
+    {
+        // Set headers to force the download
+        header('Content-Type: text/csv');
+        header('Content-Disposition: attachment; filename="newsletter.csv"');
+
+        // Query to fetch data
+        $query = $this->query("SELECT n_name, n_email FROM newsletter");
+
+        // Open output stream for writing
+        $output = fopen('php://output', 'w');
+
+        // Output the CSV column headers
+        fputcsv($output, ['Name', 'Email']);
+
+        // Output data rows
+        if ($this->num_rows($query) > 0) {
+            while ($row = $this->fetch_assoc($query)) {
+                fputcsv($output, $row);
+            }
+        }
+
+        // Close output stream
+        fclose($output);
+
+        // Terminate script execution after the file download
+        exit();
+    }
+
+
+
     public function __destruct()
     {
         if ($this->conn != null && !$this->conn->connect_error) {

@@ -32,7 +32,7 @@ if (!$sql) {
 
 // Check if the email already exists in the newsletter table using prepared statement
 $query = "SELECT n_email FROM newsletter WHERE n_email = ?";
-$stmt = $sql->prepare($query);
+$stmt = $sql->query($query);
 
 if (!$stmt) {
     error_log('Error preparing statement: ' . $sql->getError());

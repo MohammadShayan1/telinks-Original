@@ -1,3 +1,17 @@
+<?php
+global $sql;
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    extract($_POST);
+
+    if (isset($nname) && isset($nemail)) {
+        $sql->query("INSERT INTO newsletter (n_name, n_email) VALUES ('{$sql->escape($nname)}', '{$sql->escape($nemail)}')");
+    }
+}
+
+?>
+
+
 <main>
     <!-- Hero -->
     <section class="pb-5" id="hero">
@@ -167,8 +181,8 @@
                 </div>
             </div>
             <div class="row gy-4">
-                <div class="col-md-6 col-xl-4"><img alt="" class="img-fluid rounded"
-                        src="./gui/imgs/iftar_drive5.jpg"></div>
+                <div class="col-md-6 col-xl-4"><img alt="" class="img-fluid rounded" src="./gui/imgs/iftar_drive5.jpg">
+                </div>
                 <div class="col-md-6 col-xl-4">
                     <div class="bg-light rounded h-100 d-flex align-items-center">
                         <div class="text-center p-5 p-md-3">
@@ -179,14 +193,14 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-6 col-xl-4"><img alt="" class="img-fluid rounded"
-                        src="./gui/imgs/iftar_drive2.jpg"></div>
-                <div class="col-md-6 col-xl-4"><img alt="" class="img-fluid rounded"
-                        src="./gui/imgs/iftar_drive1.jpg"></div>
-                <div class="col-md-6 col-xl-4"><img alt="" class="img-fluid rounded"
-                        src="./gui/imgs/iftar_drive3.jpg"></div>
-                <div class="col-md-6 col-xl-4"><img alt="" class="img-fluid rounded"
-                        src="./gui/imgs/iftar_drive4.jpg"></div>
+                <div class="col-md-6 col-xl-4"><img alt="" class="img-fluid rounded" src="./gui/imgs/iftar_drive2.jpg">
+                </div>
+                <div class="col-md-6 col-xl-4"><img alt="" class="img-fluid rounded" src="./gui/imgs/iftar_drive1.jpg">
+                </div>
+                <div class="col-md-6 col-xl-4"><img alt="" class="img-fluid rounded" src="./gui/imgs/iftar_drive3.jpg">
+                </div>
+                <div class="col-md-6 col-xl-4"><img alt="" class="img-fluid rounded" src="./gui/imgs/iftar_drive4.jpg">
+                </div>
             </div>
         </div>
     </section>
@@ -324,8 +338,7 @@
                         <img class="img-fluid imggreyout" src="./gui/imgs/sponsors/blue.png" alt="sponsor3">
                     </div>
                     <div class="col-md-3 col-6">
-                        <img class="img-fluid imggreyout" src="./gui/imgs/sponsors/british-council.png"
-                            alt="sponsor4">
+                        <img class="img-fluid imggreyout" src="./gui/imgs/sponsors/british-council.png" alt="sponsor4">
                     </div>
                     <div class="col-md-3 col-6">
                         <img class="img-fluid imggreyout" src="./gui/imgs/sponsors/businesssolutions.png"
@@ -359,12 +372,10 @@
                         <img class="img-fluid imggreyout" src="./gui/imgs/sponsors/telec-logo.png" alt="sponsor4">
                     </div>
                     <div class="col-md-3 col-6">
-                        <img class="img-fluid imggreyout" src="./gui/imgs/sponsors/the-doodle-club.png"
-                            alt="sponsor4">
+                        <img class="img-fluid imggreyout" src="./gui/imgs/sponsors/the-doodle-club.png" alt="sponsor4">
                     </div>
                     <div class="col-md-3 col-6">
-                        <img class="img-fluid imggreyout" src="./gui/imgs/sponsors/times-consultant.png"
-                            alt="sponsor4">
+                        <img class="img-fluid imggreyout" src="./gui/imgs/sponsors/times-consultant.png" alt="sponsor4">
                     </div>
                     <div class="col-md-3 col-6">
                         <img class="img-fluid imggreyout" src="./gui/imgs/sponsors/ubl-blue.png" alt="sponsor4">
@@ -390,8 +401,7 @@
                         <p class="lead"><q>Be the first to find out! Subscribe to our newsletter to get interesting
                                 stories, professional advice, and up-to-date news sent right to your inbox.</q></p>
                         <div class="mx-auto mt-3">
-                            <form action="./gui/forms/savedata.php" role="form" class="row g-3" method="post"
-                                id="newsletterForm">
+                            <form action="" role="form" class="row g-3" method="post" id="newsletterForm">
                                 <div class="col-md-4">
                                     <input class="form-control bg-light" placeholder="Full name" name="nname"
                                         type="text" required>

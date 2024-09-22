@@ -128,7 +128,7 @@ $_SESSION['last_activity'] = time();
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="newsletter.php">
+                            <a class="nav-link" href="./newsletter">
                                 Newsletter
                             </a>
                         </li>
@@ -145,7 +145,7 @@ $_SESSION['last_activity'] = time();
             <!-- Main Content -->
             <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
                 <div class="container mt-4">
-                    <img src="../assets/imgs/telinkslogo.png" alt="Logo">
+                    <img src="./gui/imgs/telinkslogo.png" alt="Logo">
                     <h2><?php echo 'Welcome, ' . $_SESSION['username']; ?></h2>
                     <a href="./admin-logout" class="logout-link">Logout</a>
                     <!-- Your additional content here -->
