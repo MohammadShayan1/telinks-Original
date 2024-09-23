@@ -35,7 +35,7 @@
         </div>
         <div class="row pb-3">
             <div class="col-12 text-center small">
-                © 2024 <a class="d-block d-lg-inline mx-1" href="https://MohammadShayan.com"> MohammadShayan.com</a>
+                © 2024 Team Technical
                 All rights reserved.
             </div>
         </div>
