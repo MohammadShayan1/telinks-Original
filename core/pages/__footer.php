@@ -6,20 +6,23 @@
             <div class="col-12 col-lg-6 navbar-expand text-center">
                 <ul class="list-unstyled d-block d-lg-flex justify-content-center mb-3 mb-lg-0">
                     <li class="nav-item">
-                        <a class=" text-decoration-none me-lg-3" href="./index.php">Home</a>
+                        <a class=" text-decoration-none me-lg-3" href="./home">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class=" text-decoration-none me-lg-3" href="gui/member.php">Become a
+                        <a class=" text-decoration-none me-lg-3" href="./member">Become a
                             Member</a>
                     </li>
                     <li class="nav-item">
-                        <a class=" text-decoration-none me-lg-3" href="gui/Gallery.php">Gallery</a>
+                        <a class=" text-decoration-none me-lg-3" href="./Gallery">Gallery</a>
                     </li>
                     <li class="nav-item">
-                        <a class="text-decoration-none me-lg-3" href="gui/Contact.php">Contact</a>
+                        <a class="text-decoration-none me-lg-3" href="./Contact">Contact</a>
                     </li>
                     <li class="nav-item">
-                        <a class="text-decoration-none" href="gui/alumni.php">Alumni</a>
+                        <a class="text-decoration-none" href="./alumni">Alumni</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="text-decoration-none" href="./academic">Academics</a>
                     </li>
                 </ul>
             </div>

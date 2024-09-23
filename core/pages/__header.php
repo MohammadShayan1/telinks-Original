@@ -45,6 +45,7 @@
                     <li><a href="./Gallery">Gallery</a></li>
                     <li><a href="./Contact">Contact</a></li>
                     <li><a href="./Alumni">Alumni TE LINKS</a></li>
+                    <li><a href="./Academic">Academics</a></li>
                 </ul>
             </nav>
         </section>
