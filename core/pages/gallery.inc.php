@@ -1,8 +1,5 @@
 <?php
 global $sql;
-// Fetch images from the database
-$query = $sql->query('SELECT * FROM images');
-$images = $query->fetch_assoc();
 ?>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css">
@@ -27,15 +24,18 @@ $images = $query->fetch_assoc();
             </ul>
         </div>
         <div class="portfolio-item row">
-            <?php if($images != null) { foreach ($images as $image): ?>
-                <div class="item <?php echo htmlspecialchars($image['category']); ?> col-lg-3 col-md-4 col-6 col-sm">
-                    <a href="../telinks/admin/<?php echo htmlspecialchars($image['url']); ?>" class="fancylight popup-btn"
-                        data-fancybox-group="<?php echo htmlspecialchars($image['category']); ?>">
-                        <img class="img-fluid" src="../telinks/admin/<?php echo htmlspecialchars($image['url']); ?>"
-                            alt="<?php echo htmlspecialchars($image['alt_text']); ?>">
+            <?php
+                $res = $sql->query("SELECT * FROM images");
+                while($row = $res->fetch_assoc()):
+            ?>
+                <div class="item <?=$row['category']?> col-lg-3 col-md-4 col-6 col-sm">
+                    <a href="./<?=$row['url']?>" class="fancylight popup-btn"
+                        data-fancybox-group="<?=$row['category']?>">
+                        <img class="img-fluid" src="./<?=$row['url']?>"
+                            alt="<?=$row['alt_text']?>">
                     </a>
                 </div>
-            <?php endforeach; } ?>
+            <?php endwhile;?>
         </div>
     </div>
 </main>
@@ -46,4 +46,4 @@ $images = $query->fetch_assoc();
     <script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js"></script>
     <!-- Include Fancybox -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js"></script>
-<script src="./gui/js/gallery.js"></script>
+    <script src="./gui/js/gallery.js"></script>
