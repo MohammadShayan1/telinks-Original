@@ -31,7 +31,7 @@ global $sql;
                 <div class="item <?=$row['category']?> col-lg-3 col-md-4 col-6 col-sm">
                     <a href="./<?=$row['url']?>" class="fancylight popup-btn"
                         data-fancybox-group="<?=$row['category']?>">
-                        <img class="img-fluid" src="./<?=$row['url']?>"
+                        <img class="img-fluid <?=$row['category']?>" src="./<?=$row['url']?>"
                             alt="<?=$row['alt_text']?>">
                     </a>
                 </div>
@@ -39,11 +39,9 @@ global $sql;
         </div>
     </div>
 </main>
-
-   <!-- Include Isotope -->
-   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.6/isotope.pkgd.min.js"></script>
-    <!-- Include Magnific Popup -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js"></script>
-    <!-- Include Fancybox -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js"></script>
-    <script src="./gui/js/gallery.js"></script>
+<!-- jQuery -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<!-- Isotope -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.6/isotope.pkgd.min.js"></script>
+<!-- Custom JS -->
+<script src="./gui/js/gallery.js"></script>

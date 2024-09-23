@@ -398,3 +398,5 @@ $query = $db->query("SELECT * FROM events ORDER BY date_from ASC");
         </div>
     </section>
 </main>
+
+<script src="./gui/js/main.js"></script>
