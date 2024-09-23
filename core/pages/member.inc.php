@@ -1,13 +1,13 @@
 <main>
-    <section class="py-5">
+    <section class="py-5 mt-5">
         <div class="container" data-aos="fade-up" data-aos-duration="1000">
             <div class="row align-items-center">
                 <div class="col-md-6">
                     <span class="text-muted">Become a Member</span>
-                    <h2 class="display-6 fw-bold">Member Benefits</h2>
-                    <p class="text-muted">Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia totam recusandae voluptatibus quam!</p>
+                    <h2 class="display-6 fw-bold">Member's Benefit</h2>
+                    <p class="text-muted">Becoming a member of TE-Links opens the door to a wealth of opportunities. From gaining access to industry leaders and experts to participating in exclusive workshops and seminars, our members are equipped with the tools they need to succeed in the ever-evolving world of telecommunications and electronics. Join us and be part of a dynamic community of learners and innovators.</p>
                     <div class="row pt-3 pt-lg-4">
-                        <div class="col-sm-6">
+                        <!-- <div class="col-sm-6">
                             <div class="mb-sm-0 mb-3">
                                 <div class="text-muted">
                                     <svg class="bi bi-aspect-ratio" fill="currentColor" height="48" viewbox="0 0 16 16" width="48" xmlns="http://www.w3.org/2000/svg">
@@ -18,8 +18,8 @@
                                 <h5 class="my-3">Responsive Design</h5>
                                 <p>Lorem ipsum dolor sit amet consectetur.</p>
                             </div>
-                        </div>
-                        <div class="col-sm-6">
+                        </div> -->
+                        <!-- <div class="col-sm-6">
                             <div class="mb-sm-0 mb-3">
                                 <div class="text-muted">
                                     <svg class="bi bi-emoji-wink" fill="currentColor" height="48" viewbox="0 0 16 16" width="48" xmlns="http://www.w3.org/2000/svg">
@@ -30,7 +30,7 @@
                                 <h5 class="my-3">Easy-To-Use</h5>
                                 <p>Lorem ipsum dolor sit amet consectetur.</p>
                             </div>
-                        </div>
+                        </div> -->
                     </div>
                 </div>
                 
@@ -50,7 +50,7 @@
 .responsive-iframe-container {
     position: relative;
     overflow: hidden;
-    padding-top: 56.25%; /* 16:9 aspect ratio */
+    padding-top: 75%; /* Increased height ratio */
 }
 
 .responsive-iframe-container iframe {
@@ -61,4 +61,5 @@
     height: 100%;
     border: 0;
 }
+
 </style>

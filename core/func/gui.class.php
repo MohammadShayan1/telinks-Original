@@ -17,7 +17,7 @@ class gui
         if (file_exists("./core/pages/{$this->page}.inc.php")) {
 
             if (!isset($_GET["download"])) {
-                if (helper::searchMultipleWords($this->page, ["admin-dashboard", "edit_member", "newsletter", "regmember", "admin-add-event", "admin-edit-event", "admin-event"])) {
+                if (helper::searchMultipleWords($this->page, ["admin-dashboard", "edit_member", "newsletter", "regmember", "admin-image-form", "admin-add-event", "admin-edit-event", "admin-event"])) {
                     include "./core/pages/__admin-header.php";
                 } else {
                     if (!helper::searchMultipleWords($this->page, ["admin-home"]))
@@ -29,7 +29,7 @@ class gui
             include "./core/pages/{$this->page}.inc.php";
 
             if (!isset($_GET["download"])) {
-                if (helper::searchMultipleWords($this->page, ["admin-dashboard", "edit_member", "newsletter", "regmember", "admin-add-event", "admin-edit-event", "admin-event"])) {
+                if (helper::searchMultipleWords($this->page, ["admin-dashboard", "edit_member", "newsletter", "regmember", "admin-image-form", "admin-add-event", "admin-edit-event", "admin-event"])) {
                     include "./core/pages/__admin-footer.php";
                 } else {
                     if (!helper::searchMultipleWords($this->page, ["admin-home"]))

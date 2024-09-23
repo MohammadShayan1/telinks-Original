@@ -144,7 +144,7 @@ $_SESSION['last_activity'] = time();
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="form.php">
+                            <a class="nav-link" href="./admin-image-form">
                                 Gallery (Add Image)
                             </a>
                         </li>

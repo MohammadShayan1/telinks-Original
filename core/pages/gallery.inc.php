@@ -46,4 +46,4 @@ $images = $query->fetch_assoc();
     <script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js"></script>
     <!-- Include Fancybox -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js"></script>
-<script src="./assets/js/gallery.js"></script>
+<script src="./gui/js/gallery.js"></script>
