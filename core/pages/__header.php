@@ -3,7 +3,13 @@
 
 <head>
     <title><?= $this->title() ?></title>
-    <link rel="shortcut icon" href="./gui/imgs/telinkslogo.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" sizes="180x180" href="./gui/imgs/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="./gui/imgs/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="./gui/imgs/favicon/favicon-16x16.png">
+    <link rel="manifest" href="./gui/imgs/favicon/site.webmanifest">
+    <link rel="mask-icon" href="./gui/imgs/favicon/safari-pinned-tab.svg" color="#5bbad5">
+    <meta name="msapplication-TileColor" content="#2b5797">
+    <meta name="theme-color" content="#ffffff">
     <!-- Required meta tags -->
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
@@ -27,7 +33,7 @@
     <header>
         <section class="bg-dark">
             <a href="./index.php" class="logo">
-                <img class="sticky-top" style="position: fixed; top: 5%; height: 75px;" src="./gui/imgs/Original.png"
+                <img class="sticky-top" style="position: fixed; top: 5%; height: 75px;" src="./gui/imgs/telinkslogoblwh.png"
                     alt="TE LINKS Logo">
             </a>
             <input class="menu-icon" type="checkbox" id="menu-icon" name="menu-icon" />

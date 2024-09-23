@@ -28,7 +28,13 @@ $_SESSION['last_activity'] = time();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?= $this->title() ?></title>
-    <link rel="shortcut icon" href="./gui/imgs/telinkslogo.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" sizes="180x180" href="./gui/imgs/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="./gui/imgs/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="./gui/imgs/favicon/favicon-16x16.png">
+    <link rel="manifest" href="./gui/imgs/favicon/site.webmanifest">
+    <link rel="mask-icon" href="./gui/imgs/favicon/safari-pinned-tab.svg" color="#5bbad5">
+    <meta name="msapplication-TileColor" content="#2b5797">
+    <meta name="theme-color" content="#ffffff">
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
@@ -120,6 +126,11 @@ $_SESSION['last_activity'] = time();
                         <li class="nav-item">
                             <a class="nav-link " aria-current="page" href="./admin-dashboard">
                                 Dashboard
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="./admin-event">
+                                Event (Upcoming)
                             </a>
                         </li>
                         <li class="nav-item">

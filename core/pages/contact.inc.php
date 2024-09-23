@@ -3,7 +3,28 @@
         color: #1c1c1c;
         text-decoration: none;
     }
+
+    /* Make the iframe container responsive */
+    .google-form-container {
+        width: 100%;
+        max-width: 100%;
+        overflow: hidden;
+        position: relative;
+        padding-bottom: 75%; /* Aspect ratio for the iframe */
+        height: 0;
+    }
+
+    .google-form-container iframe {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        border: 0;
+    }
+
 </style>
+
 <main>
     <section class="py-5">
         <div class="container" data-aos="fade-up" data-aos-duration="1000">
@@ -19,9 +40,9 @@
             <div class="row justify-content-between">
                 <div class="col-lg-6">
                     <h5 class="fw-semibold mb-3">Send us a message</h5>
-                    <iframe
-                        src="https://docs.google.com/forms/d/e/1FAIpQLSehfjy7pmYqONZl3Xy1i1GDZpoL-umUDmaUPQ305VOxNxTWpA/viewform?embedded=true"
-                        width="640" height="561" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
+                    <div class="google-form-container">
+                        <iframe src="https://docs.google.com/forms/d/e/1FAIpQLScv5GziZwio_Fv7GO_VQiYy6-RHWVaIPTHQqLfhfLUlaxhaVQ/viewform?embedded=true" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
+                    </div>
                 </div>
                 <div class="col-lg-5 mt-5 mt-lg-0">
                     <div class="mb-4">

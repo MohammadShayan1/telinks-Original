@@ -26,7 +26,7 @@
 
     // Log out user at 15 minutes
     setTimeout(function() {
-        window.location.href = "admin-logout.php";
+        window.location.href = "admin-logout";
     }, logoutTime);
 console.log("running");
 </script>

@@ -8,6 +8,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $sql->query("INSERT INTO newsletter (n_name, n_email) VALUES ('{$sql->escape($nname)}', '{$sql->escape($nemail)}')");
     }
 }
+// Create a new instance of the sql class
+$db = new sql();
+
+// Fetch events from the database
+$query = $db->query("SELECT * FROM events ORDER BY date_from ASC");
+
 
 ?>
 
@@ -109,63 +115,35 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <section class="text-center">
         <hr class="hr-text" data-content="">
     </section>
-    <!-- Upcoming events -->
-    <section class="py-5">
-        <div class="container" data-aos="fade-up">
-            <div class="row justify-content-center text-center mb-4 mb-md-5">
-                <div class="col-xl-9 col-xxl-8">
-                    <h2 class="display-5 fw-bold">Upcoming Events</h2>
-                    <p class="lead"><q>Exciting events ahead: fun conferences and cool gatherings! Get ready for some
-                            awesome times!</q></p>
-                </div>
-            </div>
-            <div class="row align-items-center gy-md-5">
-                <div class="col-md-6">
-                    <div class="mt-4 mt-md-0 text-center"><img alt="" class="img-fluid rounded my-md-0 my-4 w-75"
-                            src="./gui/imgs/upcoming-events/upcoming_event_1.jpg"></div>
-                </div>
-                <div class="col-md-6">
-                    <h2 class="fw-semibold my-1">AI/ML: Basics, Industry Insights and Roadmap</h2>
-                    <div class="text-muted">
-                        5th, 6th & 7th of April 2024 from 9:30 PM to 11 PM
-                    </div>
-                    <p class="my-4">Join our university society's 6th workshop in the Self-Investment Hour series,
-                        exploring the fundamentals of AI/ML with industry expert Tauqeer Ali Khan. From ethics and
-                        data to software industry applications and career pathways, this workshop offers invaluable
-                        insights into the world of artificial intelligence and machine learning.</p>
-                </div>
-                <div class="col-md-6">
-                    <div class="mt-4 mt-md-0 text-center "><img alt="" class="img-fluid rounded my-md-0 my-4 w-75 "
-                            src="./gui/imgs/upcoming-events/upcoming_event_2.jpg"></div>
-                </div>
-                <div class="col-md-6">
-                    <h2 class="fw-semibold my-1"> Exploratory Data Analysis in Python</h2>
-                    <div class="text-muted">
-                        2nd & 5th April, 2024 from 11 PM TO 1 AM
-                    </div>
-                    <p class="my-4">Join us for the 5th workshop of our Self Investment Hour series led by seasoned
-                        data scientist, Ammar Jamshed. Dive into Exploratory Data Analysis in Python across 2
-                        intense days. Day 1 covers EDA fundamentals including Pandas basics and Data Visualization.
-                        Day 2 explores advanced techniques like Multivariate Analysis and offers hands-on labs.
-                        Don't miss this collaboration between TE-Links and Ai DataYard, where expertise meets
-                        innovation. </p>
-                </div>
-                <div class="col-md-6">
-                    <div class="mt-4 mt-md-0 text-center "><img alt="" class="img-fluid rounded my-md-0 my-4 w-75"
-                            src="./gui/imgs/upcoming-events/upcoming_event_3.jpg"></div>
-                </div>
-                <div class="col-md-6">
-                    <h2 class="fw-semibold my-1">Web Development</h2>
-                    <div class="text-muted">
-                        28th, 29th & 30th March, 2024 from 11 PM to 1 AM
-                    </div>
-                    <p class="my-4">Elevate your skills with our 4th Self Investment Hour workshop focusing on "Web
-                        Development" with expert Rehab Khalil. Learn HTML, CSS, JavaScript, and React.js to craft
-                        intuitive interfaces. Don't miss this opportunity to stand out from the crowd!</p>
-                </div>
+    <!-- Upcoming events section -->
+<section class="py-5">
+    <div class="container" data-aos="fade-up">
+        <div class="row justify-content-center text-center mb-4 mb-md-5">
+            <div class="col-xl-9 col-xxl-8">
+                <h2 class="display-5 fw-bold">Upcoming Events</h2>
+                <p class="lead"><q>Exciting events ahead: fun conferences and cool gatherings! Get ready for some awesome times!</q></p>
             </div>
         </div>
-    </section>
+        <div class="row align-items-center gy-md-5">
+            <?php if ($db->num_rows($query) > 0): ?>
+                <?php while ($event = $db->fetch_assoc($query)): ?>
+                    <div class="col-md-6">
+                        <div class="mt-4 mt-md-0 text-center"><img alt="" class="img-fluid rounded my-md-0 my-4 w-75" src="<?php echo $event['image_url']; ?>"></div>
+                    </div>
+                    <div class="col-md-6">
+                        <h2 class="fw-semibold my-1"><?php echo $event['title']; ?></h2>
+                        <div class="text-muted">
+                            <?php echo date('jS F', strtotime($event['date_from'])) . " - " . date('jS F Y', strtotime($event['date_to'])); ?>
+                        </div>
+                        <p class="my-4"><?php echo $event['description']; ?></p>
+                    </div>
+                <?php endwhile; ?>
+            <?php else: ?>
+                <p>No Upcoming Events For Now :)</p>
+            <?php endif; ?>
+        </div>
+    </div>
+</section>
     <section class="text-center">
         <hr class="hr-text" data-content="">
     </section>
@@ -213,17 +191,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <div class="row justify-content-center text-center mb-3">
                 <div class="col-lg-8 col-xl-7">
                     <h2 class="display-5 fw-bold">Frequently Asked Questions</h2>
-                    <p class="lead">Lorem ipsum dolor sit, amet consectetur adipisicing elit Consequatur quidem eius
-                        cum voluptatum quasi delectus.</p>
+                    <p class="lead">Explore our most common inquiries below to understand how TE-Links can help you grow and connect with like-minded individuals. From event details to membership opportunities, find everything you need to know right here!</p>
                 </div>
             </div>
             <div class="row justify-content-center">
                 <div class="col-md-5">
-                    <span class="text-muted">Lorem ipsum dolor</span>
+                    <!-- <span class="text-muted">Lorem ipsum dolor</span> -->
                     <h2 class="pb-4 fw-bold">Have Any Questions?</h2>
-                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Consequatur quidem eius cum
-                        voluptatum quasi delectus assumenda culpa.</p><a class="btn btn-dark btn-lg mt-3"
-                        href="./Contact.php">Contact us</a>
+                    <p>At TE-Links, we value open communication and are here to assist you with any inquiries, whether about our society, upcoming events, or membership opportunities. Whether you're a student looking for guidance or an industry professional seeking collaboration, feel free to reach out. Let's connect and build a brighter future in telecommunications and technology together!.</p><a class="btn btn-dark btn-lg mt-3"
+                        href="./Contact">Contact us</a>
                 </div>
                 <div class="col-md-7">
                     <div class="accordion" id="Questions-accordion">
@@ -398,8 +374,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     <div class="col-lg-8">
                         <span class="text-muted">Newsletter</span>
                         <h2 class="display-5 fw-bold">Subscribe Today</h2>
-                        <p class="lead"><q>Be the first to find out! Subscribe to our newsletter to get interesting
-                                stories, professional advice, and up-to-date news sent right to your inbox.</q></p>
+                        <p class="lead"><q>Stay ahead of the curve with the latest updates from the world of telecommunications, AI, and green technology. Our newsletter brings you exclusive insights from industry experts, alumni experiences, and upcoming society events. Subscribe now to be part of our growing community, where knowledge and innovation thrive!.</q></p>
                         <div class="mx-auto mt-3">
                             <form action="" role="form" class="row g-3" method="post" id="newsletterForm">
                                 <div class="col-md-4">
