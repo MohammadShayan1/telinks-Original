@@ -25,7 +25,7 @@ $query = $db->query("SELECT * FROM events ORDER BY date_from ASC");
             <div class="slider__content" id="slider-content">
                 <div class="slider__images">
                     <div class="slider__images-item slider__images-item--active" data-id="1"><img
-                            src="./gui/imgs/welcome.jpeg" /></div>
+                            src="./gui/imgs/welcome.webp" /></div>
                     <div class="slider__images-item" data-id="2"><img src="./gui/imgs/olympiad.jpg" /></div>
                     <div class="slider__images-item" data-id="3"><img src="./gui/imgs/comingsoon.jpeg" /></div>
                     <!-- <div class="slider__images-item" data-id="4"><img src="https://lh3.googleusercontent.com/7MsdX710gvwl8YRxuiPIlIbGP8d3ypDASWqIOad9SpHHAPwMATjCoftyvoHjpy9eeD8aJVxVup-Zb02QMeBSFOXyqOlVc8ib3TVIXtktozy6sJK07H8Jo8UlJSpYcfgUq83Z5rJOiGQQAaZPhRYUcCR0aenU8Eh8aTuqvttfZA-PjsU39q5_I1HcpWDF1mXIxJTmlGqsoQNIuL75GDE-I2im2tAjEk6bkJkJEbDntxB5cLJEfV8TuKRsQwenkiN5opF4ttHGXYtJlS7adu-IO4wVIFcEOzdx4c1Eri3O6f9qjsTpXQH3BmpkTaLAtL5xzJit9qa0a4Dp-aZOZp1QzWeB6-dLM5HRxSiPFkku3S1umwm_GBeY3glxd3Ftata1mFIxpis6gR76oTiNO33vjxn1UZXYhCQUDByGyyuE6WOoPtu9iXJxfmUF9UMXiXVl7qyH-U7NJmq18qcU0Q6U7H3VucD_d2Vg8WTZmqVq7aA4jQ7MLuQASgMZIerxgwV_aW98z7xsS8isHgF9rN4Qtez18OjyabQxRXlC6shvRTqTDCpt1MPlfBWwyR2BKO3dHzk7h8T5=w1600-h766"/></div>
@@ -34,10 +34,10 @@ $query = $db->query("SELECT * FROM events ORDER BY date_from ASC");
                 <div class="slider__text">
                     <div class="slider__text-item slider__text-item--active" data-id="1">
                         <div class="slider__text-item-head">
-                            <h3>WELCOME</h3>
+                            <h3></h3>
                         </div>
                         <div class="slider__text-item-info">
-                            <p>“Embrace the journey, ignite your spark, welcome to our family”</p>
+                            <p></p>
                         </div>
                     </div>
                     <div class="slider__text-item " data-id="2">
