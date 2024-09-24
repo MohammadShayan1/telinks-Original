@@ -32,7 +32,7 @@
 <body>
     <header>
         <section class="bg-dark">
-            <a href="./index.php" class="logo">
+            <a href="./index" class="logo">
                 <img class="sticky-top" style="position: fixed; top: 5%; height: 75px;" src="./gui/imgs/telinkslogoblwh.png"
                     alt="TE LINKS Logo">
             </a>
