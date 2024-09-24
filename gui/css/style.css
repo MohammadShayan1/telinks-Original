@@ -107,16 +107,16 @@
   line-height: 1.5;
   overflow: hidden;
 }
-.slider__text-item h3 {
+/* .slider__text-item h3 {
   color: #fafaff;
   background-color: #1c1c1c4b;
-}
+} */
 .slider__text-item p {
   font-family: "Reem Kufi Fun", sans-serif;
   padding: 1em;
   color: #fafaff;
   text-align: center;
-  background-color: #1c1c1c4b;
+  /* background-color: #1c1c1c4b; */
 }
 .slider__text-item h3::before, .slider__text-item p::before {
   content: '';

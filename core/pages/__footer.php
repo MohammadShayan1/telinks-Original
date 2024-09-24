@@ -6,20 +6,23 @@
             <div class="col-12 col-lg-6 navbar-expand text-center">
                 <ul class="list-unstyled d-block d-lg-flex justify-content-center mb-3 mb-lg-0">
                     <li class="nav-item">
-                        <a class=" text-decoration-none me-lg-3" href="./index.php">Home</a>
+                        <a class=" text-decoration-none me-lg-3" href="./home">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class=" text-decoration-none me-lg-3" href="gui/member.php">Become a
+                        <a class=" text-decoration-none me-lg-3" href="./member">Become a
                             Member</a>
                     </li>
                     <li class="nav-item">
-                        <a class=" text-decoration-none me-lg-3" href="gui/Gallery.php">Gallery</a>
+                        <a class=" text-decoration-none me-lg-3" href="./Gallery">Gallery</a>
                     </li>
                     <li class="nav-item">
-                        <a class="text-decoration-none me-lg-3" href="gui/Contact.php">Contact</a>
+                        <a class="text-decoration-none me-lg-3" href="./Contact">Contact</a>
                     </li>
                     <li class="nav-item">
-                        <a class="text-decoration-none" href="gui/alumni.php">Alumni</a>
+                        <a class="text-decoration-none  me-lg-3" href="./alumni">Alumni</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="text-decoration-none" href="./academic">Academics</a>
                     </li>
                 </ul>
             </div>
@@ -32,8 +35,7 @@
         </div>
         <div class="row pb-3">
             <div class="col-12 text-center small">
-                © 2024 <a class="d-block d-lg-inline mx-1" href="https://MohammadShayan.com"> MohammadShayan.com</a>
-                All rights reserved.
+                © 2024 <a href="./team-technical">Team Technical </a> All rights reserved.
             </div>
         </div>
     </div>
@@ -50,7 +52,8 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-<script src="./gui/js/main.js"></script>
+ 
+<!-- <script src="./gui/js/main.js"></script> -->
 <script>
     AOS.init();
 </script>
