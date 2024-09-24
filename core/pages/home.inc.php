@@ -42,7 +42,7 @@ $query = $db->query("SELECT * FROM events ORDER BY date_from ASC");
                     </div>
                     <div class="slider__text-item " data-id="2">
                         <div class="slider__text-item-head">
-                            <h3>TE LINKS</h3>
+                            <h3></h3>
                         </div>
                         <div class="slider__text-item-info">
                             <p>“Bound by passion, fueled by dedication, we triumph as one”</p>
@@ -50,7 +50,7 @@ $query = $db->query("SELECT * FROM events ORDER BY date_from ASC");
                     </div>
                     <div class="slider__text-item" data-id="3">
                         <div class="slider__text-item-head">
-                            <h3>COMING SOON</h3>
+                            <h3></h3>
                         </div>
                         <div class="slider__text-item-info">
                             <p>“United in purpose, unstoppable in action, we conquer together”</p>
@@ -167,7 +167,7 @@ $query = $db->query("SELECT * FROM events ORDER BY date_from ASC");
                             <h4>Ramadan Iftar Drive</h4>
                             <p class="mt-3 mb-0">Gathering at dusk, breaking fast together, and weaving memories
                                 into every bite.</p>
-                            <a href="Gallery.php" class="btn btn-primary">Goto Gallery</a>
+                            <a href="Gallery.php" class="btn btn-dark">Go to Gallery</a>
                         </div>
                     </div>
                 </div>
