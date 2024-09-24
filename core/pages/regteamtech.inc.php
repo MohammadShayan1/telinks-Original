@@ -7,40 +7,34 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['add_member'])) {
     $tenure = htmlspecialchars($_POST['tenure']);
     $linkedin = htmlspecialchars($_POST['linkedin']);
 
-    // Check if LinkedIn URL already exists
-    $check_linkedin = $sql->query("SELECT id FROM members WHERE linkedin = '$linkedin'");
-    if ($check_linkedin->num_rows > 0) {
-        $message = "<div class='alert alert-danger'>This Profile is already registered.</div>";
-    } else {
-        if (isset($_FILES['profile_picture']) && $_FILES['profile_picture']['error'] == UPLOAD_ERR_OK) {
-            $target_dir = "uploads/members/";
-            $imageFileType = strtolower(pathinfo($_FILES["profile_picture"]["name"], PATHINFO_EXTENSION));
-            $allowed_types = array("jpg", "jpeg", "png", "gif");
+    if (isset($_FILES['profile_picture']) && $_FILES['profile_picture']['error'] == UPLOAD_ERR_OK) {
+        $target_dir = "uploads/teamtech/";
+        $imageFileType = strtolower(pathinfo($_FILES["profile_picture"]["name"], PATHINFO_EXTENSION));
+        $allowed_types = array("jpg", "jpeg", "png", "gif");
 
-            // Validate file type
-            if (!in_array($imageFileType, $allowed_types)) {
-                $message = "<div class='alert alert-danger'>Sorry, only JPG, JPEG, PNG & GIF files are allowed.</div>";
+        // Validate file type
+        if (!in_array($imageFileType, $allowed_types)) {
+            $message = "<div class='alert alert-danger'>Sorry, only JPG, JPEG, PNG & GIF files are allowed.</div>";
+        } else {
+            // Validate file size (e.g., 2MB max)
+            if ($_FILES["profile_picture"]["size"] > 2000000) {
+                $message = "<div class='alert alert-danger'>File is too large. Maximum allowed size is 2MB.</div>";
             } else {
-                // Validate file size (e.g., 2MB max)
-                if ($_FILES["profile_picture"]["size"] > 2000000) {
-                    $message = "<div class='alert alert-danger'>File is too large. Maximum allowed size is 2MB.</div>";
-                } else {
-                    if (!file_exists($target_dir)) {
-                        mkdir($target_dir, 0755, true);
-                    }
-                    $target_file = $target_dir . uniqid() . "." . $imageFileType;
-                    if (move_uploaded_file($_FILES["profile_picture"]["tmp_name"], $target_file)) {
-                        // Insert the new member into the database
-                        $stmt = $sql->query("INSERT INTO members (name, position, tenure, linkedin, profile_picture) 
-                                             VALUES ('$name', '$position', '$tenure', '$linkedin', '$target_file')");
-                        if ($stmt) {
-                            $message = "<div class='alert alert-success'>Member added successfully!</div>";
-                        } else {
-                            $message = "<div class='alert alert-danger'>Database Error: " . $sql->error . "</div>";
-                        }
+                if (!file_exists($target_dir)) {
+                    mkdir($target_dir, 0755, true);
+                }
+                $target_file = $target_dir . uniqid() . "." . $imageFileType;
+                if (move_uploaded_file($_FILES["profile_picture"]["tmp_name"], $target_file)) {
+                    // Use query() for simple insert query
+                    $stmt = $sql->query("INSERT INTO teamtech (name, position, tenure, linkedin, profile_picture) 
+                                         VALUES ('$name', '$position', '$tenure', '$linkedin', '$target_file')");
+                    if ($stmt) {
+                        $message = "<div class='alert alert-success'>Member added successfully!</div>";
                     } else {
-                        $message = "<div class='alert alert-danger'>Error moving uploaded file.</div>";
+                        $message = "<div class='alert alert-danger'>Database Error: " . $sql->error . "</div>";
                     }
+                } else {
+                    $message = "<div class='alert alert-danger'>Error moving uploaded file.</div>";
                 }
             }
         }
@@ -52,7 +46,7 @@ if (isset($_GET['delete_id'])) {
     $delete_id = intval($_GET['delete_id']); // Sanitize the input
     
     // Fetch the profile picture path before deleting the member
-    $result = $sql->query("SELECT profile_picture FROM members WHERE id = '$delete_id'");
+    $result = $sql->query("SELECT profile_picture FROM teamtech WHERE id = '$delete_id'");
     $member = $sql->fetch_assoc($result);
 
     if ($member && !empty($member['profile_picture']) && file_exists($member['profile_picture'])) {
@@ -61,7 +55,7 @@ if (isset($_GET['delete_id'])) {
     }
 
     // Delete the member from the database
-    $stmt = $sql->query("DELETE FROM members WHERE id = '$delete_id'");
+    $stmt = $sql->query("DELETE FROM teamtech WHERE id = '$delete_id'");
     
     if ($stmt) {
         $message = "<div class='alert alert-success'>Member deleted successfully!</div>";
@@ -71,7 +65,7 @@ if (isset($_GET['delete_id'])) {
 }
 
 // Fetch all members
-$result = $sql->query("SELECT * FROM members");
+$result = $sql->query("SELECT * FROM teamtech");
 ?>
 
 <!-- JavaScript to switch between Add and View screens -->
@@ -144,7 +138,7 @@ $result = $sql->query("SELECT * FROM members");
                 <td><?php echo $row['position']; ?></td>
                 <td><?php echo $row['tenure']; ?></td>
                 <td><a href="<?php echo $row['linkedin']; ?>" target="_blank">LinkedIn</a></td>
-                <td><img class="w-100" src="<?php echo $row['profile_picture']; ?>" ></td>
+                <td><img src="<?php echo $row['profile_picture']; ?>" width="50" height="50"></td>
                 <td>
                     <a href="edit_member?id=<?php echo $row['id']; ?>" class="btn btn-warning btn-sm">Edit</a>
                     <a href="?delete_id=<?php echo $row['id']; ?>" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this member?')">Delete</a>
