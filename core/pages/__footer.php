@@ -19,7 +19,7 @@
                         <a class="text-decoration-none me-lg-3" href="./Contact">Contact</a>
                     </li>
                     <li class="nav-item">
-                        <a class="text-decoration-none" href="./alumni">Alumni</a>
+                        <a class="text-decoration-none  me-lg-3" href="./alumni">Alumni</a>
                     </li>
                     <li class="nav-item">
                         <a class="text-decoration-none" href="./academic">Academics</a>
