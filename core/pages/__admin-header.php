@@ -3,7 +3,7 @@ session_start();
 
 // Check if the user is logged in
 if (!isset($_SESSION['admin_logged_in']) || $_SESSION['admin_logged_in'] !== true) {
-    header("Location: ./home");
+    header("Location: home");
     exit;
 }
 
@@ -15,7 +15,7 @@ if (isset($_SESSION['last_activity']) && (time() - $_SESSION['last_activity']) >
     // Last request was more than 15 minutes ago, so log out the user
     session_unset();
     session_destroy();
-    header("Location: ./admin-home");
+    header("Location: admin-home");
     exit;
 }
 

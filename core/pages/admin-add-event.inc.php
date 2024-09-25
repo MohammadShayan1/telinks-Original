@@ -5,8 +5,8 @@ $db = new sql();
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $title = $db->escape($_POST['title']);
     $description = $db->escape($_POST['description']);
-    $date_from = $db->escape($_POST['date_from']);
-    $date_to = $db->escape($_POST['date_to']);
+    $date_from = !empty($_POST['date_from']) ? $db->escape($_POST['date_from']) : null;
+    $date_to = !empty($_POST['date_to']) ? $db->escape($_POST['date_to']) : null;
     
     // Handling the image upload
     if (isset($_FILES['image']) && $_FILES['image']['error'] === 0) {
@@ -24,8 +24,24 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         // Validate and move the uploaded file
         $image_path = $upload_dir . basename($image_name);
         if (move_uploaded_file($image_tmp, $image_path)) {
-            // Insert the event into the database with the image path
-            $db->query("INSERT INTO events (title, description, date_from, date_to, image_url) VALUES ('$title', '$description', '$date_from', '$date_to', '$image_path')");
+            // Build the query dynamically based on provided dates
+            $query = "INSERT INTO events (title, description, image_url";
+            $values = "('$title', '$description', '$image_path'";
+
+            if ($date_from) {
+                $query .= ", date_from";
+                $values .= ", '$date_from'";
+            }
+
+            if ($date_to) {
+                $query .= ", date_to";
+                $values .= ", '$date_to'";
+            }
+
+            $query .= ") VALUES $values)";
+            
+            // Insert the event into the database
+            $db->query($query);
 
             if ($db->getError()) {
                 echo "Error: " . $db->getError();
@@ -40,7 +56,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 }
 ?>
-
 <!-- Form to add event -->
 <form method="POST" action="" enctype="multipart/form-data" style="max-width: 600px; margin: auto;">
     <div style="margin-bottom: 15px;">

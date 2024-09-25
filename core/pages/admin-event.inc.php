@@ -30,9 +30,24 @@ $query = $db->query("SELECT * FROM events ORDER BY date_from ASC");
     <tbody>
         <?php while ($event = $db->fetch_assoc($query)): ?>
         <tr>
-            <td><?php echo $event['title']; ?></td>
-            <td><?php echo $event['description']; ?></td>
-            <td><?php echo date('jS F', strtotime($event['date_from'])) . " - " . date('jS F Y', strtotime($event['date_to'])); ?></td>
+            <td><?php echo htmlspecialchars($event['title']); ?></td>
+            <td><?php echo htmlspecialchars($event['description']); ?></td>
+            <td>
+                <?php
+                    $date_from = $event['date_from'] ? date('jS F', strtotime($event['date_from'])) : null;
+                    $date_to = $event['date_to'] ? date('jS F Y', strtotime($event['date_to'])) : null;
+
+                    if ($date_from && $date_to) {
+                        echo $date_from . " - " . $date_to;
+                    } elseif ($date_from) {
+                        echo "Starts on " . $date_from;
+                    } elseif ($date_to) {
+                        echo "Ends on " . $date_to;
+                    } else {
+                        echo "No date specified";
+                    }
+                ?>
+            </td>
             <td>
                 <a href="admin-edit-event?id=<?php echo $event['id']; ?>">Edit</a>
                 <a href="admin-delete-event?id=<?php echo $event['id']; ?>" onclick="return confirm('Are you sure?')">Delete</a>

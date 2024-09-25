@@ -28,7 +28,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         // Verify the password
         if ($password == $user['password']) {
             $_SESSION['admin_logged_in'] = true;
-            $_SESSION['username'] = $username; // Store the username in the session
+            $_SESSION['username'] = $username;
             header("Location: admin-dashboard");
             exit;
         } else {
@@ -49,9 +49,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Login</title>
     <link rel="shortcut icon" href="./gui/imgs/telinkslogo.ico" type="image/x-icon">
-    <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Custom Styles -->
     <style>
         body {
             background-color: #f8f9fa;
@@ -77,7 +75,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         .login-container img {
             display: block;
             margin: 0 auto 20px;
-            width: 100px; /* Adjust this size as needed */
+            width: 100px;
         }
         .login-container .btn-primary {
             background-color: #007bff;
@@ -114,7 +112,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         </form>
     </div>
 
-    <!-- Bootstrap JS (optional) -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

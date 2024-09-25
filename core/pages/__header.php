@@ -32,7 +32,7 @@
 <body>
     <header>
         <section class="bg-dark">
-            <a href="./index" class="logo">
+            <a href="./home" class="logo">
                 <img class="sticky-top" style="position: fixed; top: 5%; height: 75px;" src="./gui/imgs/telinkslogoblwh.png"
                     alt="TE LINKS Logo">
             </a>
@@ -40,12 +40,12 @@
             <label for="menu-icon"></label>
             <nav class="nav">
                 <ul class="pt-5">
-                    <li><a href="./Home">Home</a></li>
-                    <li><a href="./Member">Member</a></li>
-                    <li><a href="./Gallery">Gallery</a></li>
-                    <li><a href="./Contact">Contact</a></li>
-                    <li><a href="./Alumni">Alumni TE LINKS</a></li>
-                    <li><a href="./Academic">Academics</a></li>
+                    <li><a href="./home">Home</a></li>
+                    <li><a href="./member">Member</a></li>
+                    <li><a href="./gallery">Gallery</a></li>
+                    <li><a href="./contact">Contact</a></li>
+                    <li><a href="./alumni">Alumni TE LINKS</a></li>
+                    <li><a href="./academic">Academics</a></li>
                 </ul>
             </nav>
         </section>

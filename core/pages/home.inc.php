@@ -5,14 +5,30 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     extract($_POST);
 
     if (isset($nname) && isset($nemail)) {
-        $sql->query("INSERT INTO newsletter (n_name, n_email) VALUES ('{$sql->escape($nname)}', '{$sql->escape($nemail)}')");
+        // First, check if the email is already present
+        $emailCheck = $sql->query("SELECT * FROM newsletter WHERE n_email = '{$sql->escape($nemail)}'");
+
+        if ($sql->num_rows($emailCheck) > 0) {
+            // If email exists, show an error message
+            echo "<p style='color:red;'>This email is already subscribed to the newsletter.</p>";
+        } else {
+            // If email is not found, insert it into the database
+            $sql->query("INSERT INTO newsletter (n_name, n_email) VALUES ('{$sql->escape($nname)}', '{$sql->escape($nemail)}')");
+            if ($sql->getError()) {
+                echo "<p style='color:red;'>There was an error subscribing to the newsletter. Please try again later.</p>";
+            } else {
+                echo "<p style='color:green;'>You have successfully subscribed to the newsletter!</p>";
+            }
+        }
     }
 }
+
 // Create a new instance of the sql class
 $db = new sql();
 
 // Fetch events from the database
 $query = $db->query("SELECT * FROM events ORDER BY date_from ASC");
+
 
 
 ?>
@@ -92,14 +108,18 @@ $query = $db->query("SELECT * FROM events ORDER BY date_from ASC");
     <!-- About -->
     <section class="py-5 about text-center">
         <div class="container" data-aos="fade-up" data-aos-duration="1000">
-            <div class="row mb-5">
-                <h2 class="display-5 fw-bold">About Us</h2>
-                <p class="lead">At TE-Links, we're dedicated to nurturing talents and shaping futures. Through
-                    mentorship, technical expertise, and advocacy, we empower students at NEDUET's Telecommunications
-                    division to thrive in an ever-evolving world.</p>
-            </div>
-            <div class="row">
-                <div class="col-md-6">
+        <div class="row mb-5 text-center">
+    <h2 class="display-5 fw-bold">About Us</h2>
+    <p class="lead">At TE-Links, we're dedicated to nurturing talents and shaping futures. Through
+        mentorship, technical expertise, and advocacy, we empower students at NEDUET's Telecommunications
+        division to thrive in an ever-evolving world.</p>
+    <div class="d-flex justify-content-center">
+        <a href="./about-us" class="btn btn-primary w-25">Learn More</a>
+    </div>
+</div>
+
+            <div class="row ">
+                <!-- <div class="col-md-6">
                     <h3>OUR VISION</h3>
                     <p class="lead"><q> TE-Links at NEDUET's Telecommunications division focuses on skill development,
                             mentorship, and career guidance, advocating for societal issues campus-wide </q></p>
@@ -108,7 +128,7 @@ $query = $db->query("SELECT * FROM events ORDER BY date_from ASC");
                     <h3>OUR MISSION</h3>
                     <p class="lead"><q> TE-Links mentors students, provides technical knowledge, and encourages dynamic
                             thinking through seminars and counseling, enhancing their skill sets </q></p>
-                </div>
+                </div> -->
             </div>
         </div>
     </section>
@@ -128,13 +148,28 @@ $query = $db->query("SELECT * FROM events ORDER BY date_from ASC");
             <?php if ($db->num_rows($query) > 0): ?>
                 <?php while ($event = $db->fetch_assoc($query)): ?>
                     <div class="col-md-6">
-                        <div class="mt-4 mt-md-0 text-center"><img alt="" class="img-fluid rounded my-md-0 my-4 w-75" src="<?php echo $event['image_url']; ?>"></div>
+                        <div class="mt-4 mt-md-0 text-center"><img alt="<?php echo htmlspecialchars($event['title']); ?>" class="img-fluid rounded my-md-0 my-4 w-75" src="<?php echo $event['image_url']; ?>">
+                        </div>
                     </div>
                     <div class="col-md-6">
                         <h2 class="fw-semibold my-1"><?php echo $event['title']; ?></h2>
                         <div class="text-muted">
-                            <?php echo date('jS F', strtotime($event['date_from'])) . " - " . date('jS F Y', strtotime($event['date_to'])); ?>
-                        </div>
+    <?php
+        $date_from = !empty($event['date_from']) ? date('jS F', strtotime($event['date_from'])) : null;
+        $date_to = !empty($event['date_to']) ? date('jS F Y', strtotime($event['date_to'])) : null;
+
+        if ($date_from && $date_to) {
+            echo $date_from . " - " . $date_to;
+        } elseif ($date_from) {
+            echo "Starts on " . $date_from;
+        } elseif ($date_to) {
+            echo "Ends on " . $date_to;
+        } else {
+            echo "";
+        }
+    ?>
+</div>
+
                         <p class="my-4"><?php echo $event['description']; ?></p>
                     </div>
                 <?php endwhile; ?>
@@ -167,7 +202,7 @@ $query = $db->query("SELECT * FROM events ORDER BY date_from ASC");
                             <h4>Ramadan Iftar Drive</h4>
                             <p class="mt-3 mb-0">Gathering at dusk, breaking fast together, and weaving memories
                                 into every bite.</p>
-                            <a href="Gallery.php" class="btn btn-dark">Go to Gallery</a>
+                            <a href="./gallery" class="btn btn-dark">Go to Gallery</a>
                         </div>
                     </div>
                 </div>
@@ -199,7 +234,7 @@ $query = $db->query("SELECT * FROM events ORDER BY date_from ASC");
                     <!-- <span class="text-muted">Lorem ipsum dolor</span> -->
                     <h2 class="pb-4 fw-bold">Have Any Questions?</h2>
                     <p>At TE-Links, we value open communication and are here to assist you with any inquiries, whether about our society, upcoming events, or membership opportunities. Whether you're a student looking for guidance or an industry professional seeking collaboration, feel free to reach out. Let's connect and build a brighter future in telecommunications and technology together!.</p><a class="btn btn-dark btn-lg mt-3"
-                        href="./Contact">Contact us</a>
+                        href="./contact">Contact us</a>
                 </div>
                 <div class="col-md-7">
                     <div class="accordion" id="Questions-accordion">
