@@ -35,7 +35,7 @@
         </div>
         <div class="row pb-3">
             <div class="col-12 text-center small">
-                © 2024 <a href="./team-technical">Team Technical </a> All rights reserved.
+                © 2024 <a href="./team-technical">Team Technical.  </a> All rights reserved.
             </div>
         </div>
     </div>

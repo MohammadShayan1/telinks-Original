@@ -136,7 +136,7 @@ $query = $db->query("SELECT * FROM events ORDER BY date_from ASC");
         <hr class="hr-text" data-content="">
     </section>
     <!-- Upcoming events section -->
-<section class="py-5">
+    <section class="py-5">
     <div class="container" data-aos="fade-up">
         <div class="row justify-content-center text-center mb-4 mb-md-5">
             <div class="col-xl-9 col-xxl-8">
@@ -148,37 +148,40 @@ $query = $db->query("SELECT * FROM events ORDER BY date_from ASC");
             <?php if ($db->num_rows($query) > 0): ?>
                 <?php while ($event = $db->fetch_assoc($query)): ?>
                     <div class="col-md-6">
-                        <div class="mt-4 mt-md-0 text-center"><img alt="<?php echo htmlspecialchars($event['title']); ?>" class="img-fluid rounded my-md-0 my-4 w-75" src="<?php echo $event['image_url']; ?>">
+                        <div class="mt-4 mt-md-0 text-center">
+                            <img alt="<?php echo htmlspecialchars($event['title']); ?>" class="img-fluid rounded my-md-0 my-4 w-75" src="<?php echo $event['image_url']; ?>">
                         </div>
                     </div>
                     <div class="col-md-6">
                         <h2 class="fw-semibold my-1"><?php echo $event['title']; ?></h2>
                         <div class="text-muted">
-    <?php
-        $date_from = !empty($event['date_from']) ? date('jS F', strtotime($event['date_from'])) : null;
-        $date_to = !empty($event['date_to']) ? date('jS F Y', strtotime($event['date_to'])) : null;
+                            <?php
+                                $date_from = !empty($event['date_from']) ? date('jS F', strtotime($event['date_from'])) : null;
+                                $date_to = !empty($event['date_to']) ? date('jS F Y', strtotime($event['date_to'])) : null;
 
-        if ($date_from && $date_to) {
-            echo $date_from . " - " . $date_to;
-        } elseif ($date_from) {
-            echo "Starts on " . $date_from;
-        } elseif ($date_to) {
-            echo "Ends on " . $date_to;
-        } else {
-            echo "";
-        }
-    ?>
-</div>
-
+                                if ($date_from && $date_to) {
+                                    echo $date_from . " - " . $date_to;
+                                } elseif ($date_from) {
+                                    echo "Starts on " . $date_from;
+                                } elseif ($date_to) {
+                                    echo "Ends on " . $date_to;
+                                } else {
+                                    echo "";
+                                }
+                            ?>
+                        </div>
                         <p class="my-4"><?php echo $event['description']; ?></p>
                     </div>
                 <?php endwhile; ?>
             <?php else: ?>
-                <p>No Upcoming Events For Now :)</p>
+                <div class="col-12 text-center">
+                    <img src="./gui/imgs/upcoming-events/comingsoon.jpeg" class="img-fluid w-75" alt="Coming Soon">
+                </div>
             <?php endif; ?>
         </div>
     </div>
 </section>
+
     <section class="text-center">
         <hr class="hr-text" data-content="">
     </section>
