@@ -27,8 +27,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <form method="POST" action="">
     <input type="text" name="title" value="<?php echo $event['title']; ?>" required>
     <textarea name="description" required><?php echo $event['description']; ?></textarea>
-    <input type="date" name="date_from" value="<?php echo $event['date_from']; ?>" required>
-    <input type="date" name="date_to" value="<?php echo $event['date_to']; ?>" required>
+    <input type="date" name="date_from" value="<?php echo $event['date_from']; ?>">
+    <input type="date" name="date_to" value="<?php echo $event['date_to']; ?>">
     <input type="text" name="image_url" value="<?php echo $event['image_url']; ?>" required>
     <button type="submit">Update Event</button>
 </form>

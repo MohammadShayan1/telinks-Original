@@ -12,6 +12,6 @@ if ($db->getError()) {
 } else {
     echo "Event deleted successfully!";
     // Redirect back to the events list
-    header('Location: admin_events.php');
+    header('Location: admin-event');
 }
 ?>

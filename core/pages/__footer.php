@@ -16,7 +16,7 @@
                         <a class=" text-decoration-none me-lg-3" href="./Gallery">Gallery</a>
                     </li>
                     <li class="nav-item">
-                        <a class="text-decoration-none me-lg-3" href="./Contact">Contact</a>
+                        <a class="text-decoration-none me-lg-3" href="./contact">Contact</a>
                     </li>
                     <li class="nav-item">
                         <a class="text-decoration-none  me-lg-3" href="./alumni">Alumni</a>
@@ -35,7 +35,7 @@
         </div>
         <div class="row pb-3">
             <div class="col-12 text-center small">
-                © 2024 <a href="./team-technical">Team Technical </a> All rights reserved.
+                © 2024 <a href="./team-technical">Team Technical.  </a> All rights reserved.
             </div>
         </div>
     </div>
