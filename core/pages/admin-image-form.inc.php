@@ -124,10 +124,9 @@ function deleteImage(id) {
                 <option value="" disabled selected>Select a category</option>
                 <option value="climatech">Climatech</option>
                 <option value="ch">Counsel Hour</option>
-                <option value="sih">Self Investment Hour</option>
+                <option value="rtld">Rolling The Last Dice</option>
                 <option value="olymtwo">Sports Team</option>
-                <option value="iftar">Iftar Drive</option>
-                <option value="plant">Plantation Drive</option>
+                <option value="interact">Interact</option>
                 <option value="other">Others</option>
             </select>
         </div>
@@ -148,10 +147,9 @@ function deleteImage(id) {
             <select class="form-select" id="edit_category" name="category" required>
                 <option value="climatech">Climatech</option>
                 <option value="ch">Counsel Hour</option>
-                <option value="sih">Self Investment Hour</option>
+                <option value="rtld">Rolling The Last Dice</option>
                 <option value="olymtwo">Sports Team</option>
-                <option value="iftar">Iftar Drive</option>
-                <option value="plant">Plantation Drive</option>
+                <option value="interact">Interact</option>
                 <option value="other">Others</option>
             </select>
         </div>
