@@ -13,7 +13,7 @@
                             Member</a>
                     </li>
                     <li class="nav-item">
-                        <a class=" text-decoration-none me-lg-3" href="./Gallery">Gallery</a>
+                        <a class=" text-decoration-none me-lg-3" href="./gallery">Gallery</a>
                     </li>
                     <li class="nav-item">
                         <a class="text-decoration-none me-lg-3" href="./contact">Contact</a>
