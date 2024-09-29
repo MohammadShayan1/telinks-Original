@@ -114,7 +114,8 @@ $query = $db->query("SELECT * FROM events ORDER BY date_from ASC");
         mentorship, technical expertise, and advocacy, we empower students at NEDUET's Telecommunications
         division to thrive in an ever-evolving world.</p>
     <div class="d-flex justify-content-center">
-        <a href="./about-us" class="btn btn-primary w-25">Learn More</a>
+        <a href="./about-us" class="btn" style="background-color : #0a1b36; color : white;">Learn More</a>
+        
     </div>
 </div>
 
@@ -136,7 +137,7 @@ $query = $db->query("SELECT * FROM events ORDER BY date_from ASC");
         <hr class="hr-text" data-content="">
     </section>
     <!-- Upcoming events section -->
-    <section class="py-5">
+<section class="py-5">
     <div class="container" data-aos="fade-up">
         <div class="row justify-content-center text-center mb-4 mb-md-5">
             <div class="col-xl-9 col-xxl-8">
@@ -148,28 +149,28 @@ $query = $db->query("SELECT * FROM events ORDER BY date_from ASC");
             <?php if ($db->num_rows($query) > 0): ?>
                 <?php while ($event = $db->fetch_assoc($query)): ?>
                     <div class="col-md-6">
-                        <div class="mt-4 mt-md-0 text-center">
-                            <img alt="<?php echo htmlspecialchars($event['title']); ?>" class="img-fluid rounded my-md-0 my-4 w-75" src="<?php echo $event['image_url']; ?>">
+                        <div class="mt-4 mt-md-0 text-center"><img alt="<?php echo htmlspecialchars($event['title']); ?>" class="img-fluid rounded my-md-0 my-4 w-75" src="<?php echo $event['image_url']; ?>">
                         </div>
                     </div>
                     <div class="col-md-6">
                         <h2 class="fw-semibold my-1"><?php echo $event['title']; ?></h2>
                         <div class="text-muted">
-                            <?php
-                                $date_from = !empty($event['date_from']) ? date('jS F', strtotime($event['date_from'])) : null;
-                                $date_to = !empty($event['date_to']) ? date('jS F Y', strtotime($event['date_to'])) : null;
+    <?php
+        $date_from = !empty($event['date_from']) ? date('jS F', strtotime($event['date_from'])) : null;
+        $date_to = !empty($event['date_to']) ? date('jS F Y', strtotime($event['date_to'])) : null;
 
-                                if ($date_from && $date_to) {
-                                    echo $date_from . " - " . $date_to;
-                                } elseif ($date_from) {
-                                    echo "Starts on " . $date_from;
-                                } elseif ($date_to) {
-                                    echo "Ends on " . $date_to;
-                                } else {
-                                    echo "";
-                                }
-                            ?>
-                        </div>
+        if ($date_from && $date_to) {
+            echo $date_from . " - " . $date_to;
+        } elseif ($date_from) {
+            echo "Starts on " . $date_from;
+        } elseif ($date_to) {
+            echo "Ends on " . $date_to;
+        } else {
+            echo "";
+        }
+    ?>
+</div>
+
                         <p class="my-4"><?php echo $event['description']; ?></p>
                     </div>
                 <?php endwhile; ?>
@@ -181,7 +182,6 @@ $query = $db->query("SELECT * FROM events ORDER BY date_from ASC");
         </div>
     </div>
 </section>
-
     <section class="text-center">
         <hr class="hr-text" data-content="">
     </section>
@@ -205,7 +205,7 @@ $query = $db->query("SELECT * FROM events ORDER BY date_from ASC");
                             <h4>Ramadan Iftar Drive</h4>
                             <p class="mt-3 mb-0">Gathering at dusk, breaking fast together, and weaving memories
                                 into every bite.</p>
-                            <a href="./gallery" class="btn btn-dark">Go to Gallery</a>
+                            <a href="./gallery" class="btn"style="background-color : #0a1b36; color : white;">Go to Gallery</a>
                         </div>
                     </div>
                 </div>
@@ -236,7 +236,7 @@ $query = $db->query("SELECT * FROM events ORDER BY date_from ASC");
                 <div class="col-md-5">
                     <!-- <span class="text-muted">Lorem ipsum dolor</span> -->
                     <h2 class="pb-4 fw-bold">Have Any Questions?</h2>
-                    <p>At TE-Links, we value open communication and are here to assist you with any inquiries, whether about our society, upcoming events, or membership opportunities. Whether you're a student looking for guidance or an industry professional seeking collaboration, feel free to reach out. Let's connect and build a brighter future in telecommunications and technology together!.</p><a class="btn btn-dark btn-lg mt-3"
+                    <p>At TE-Links, we value open communication and are here to assist you with any inquiries, whether about our society, upcoming events, or membership opportunities. Whether you're a student looking for guidance or an industry professional seeking collaboration, feel free to reach out. Let's connect and build a brighter future in telecommunications and technology together!.</p><a class="btn btn-lg mt-3"style="background-color : #0a1b36; color : white;"
                         href="./contact">Contact us</a>
                 </div>
                 <div class="col-md-7">
@@ -425,7 +425,7 @@ $query = $db->query("SELECT * FROM events ORDER BY date_from ASC");
                                 </div>
                                 <div class="col-md-4">
                                     <div class="d-grid">
-                                        <button class="btn btn-dark" type="submit">Subscribe</button>
+                                        <button class="btn"style="background-color : #0a1b36; color : white;" type="submit">Subscribe</button>
                                     </div>
                                 </div>
                             </form>
