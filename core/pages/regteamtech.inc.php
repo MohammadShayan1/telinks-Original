@@ -140,7 +140,7 @@ $result = $sql->query("SELECT * FROM teamtech");
                 <td><a href="<?php echo $row['linkedin']; ?>" target="_blank">LinkedIn</a></td>
                 <td><img src="<?php echo $row['profile_picture']; ?>" width="50" height="50"></td>
                 <td>
-                    <a href="edit_member?id=<?php echo $row['id']; ?>" class="btn btn-warning btn-sm">Edit</a>
+                    <a href="edit-teamtech?id=<?php echo $row['id']; ?>" class="btn btn-warning btn-sm">Edit</a>
                     <a href="?delete_id=<?php echo $row['id']; ?>" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this member?')">Delete</a>
                 </td>
             </tr>
