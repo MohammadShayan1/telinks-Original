@@ -1,5 +1,7 @@
 <?php
 global $sql;
+$res = $sql->query('SELECT * FROM images');
+$images = $res->fetchAll(PDO::FETCH_ASSOC);
 ?>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css">
@@ -24,18 +26,13 @@ global $sql;
             </ul>
         </div>
         <div class="portfolio-item row">
-            <?php
-                $res = $sql->query("SELECT * FROM images");
-                while($row = $res->fetch_assoc()):
-            ?>
-                <div class="item <?=$row['category']?> col-lg-3 col-md-4 col-6 col-sm">
-                    <a href="./<?=$row['url']?>" class="fancylight popup-btn"
-                        data-fancybox-group="<?=$row['category']?>">
-                        <img class="img-fluid <?=$row['category']?>" src="./<?=$row['url']?>"
-                            alt="<?=$row['alt_text']?>">
-                    </a>
-                </div>
-            <?php endwhile;?>
+        <?php foreach ($images as $image): ?>
+            <div class="item <?php echo htmlspecialchars($image['category']); ?> col-lg-3 col-md-4 col-6 col-sm">
+                <a href="./<?php echo htmlspecialchars($image['url']); ?>" class="fancylight popup-btn" data-fancybox-group="<?php echo htmlspecialchars($image['category']); ?>">
+                    <img class="img-fluid" src="./<?php echo htmlspecialchars($image['url']); ?>" alt="<?php echo htmlspecialchars($image['alt_text']); ?>">
+                </a>
+            </div>
+        <?php endforeach; ?>
         </div>
     </div>
 </main>
