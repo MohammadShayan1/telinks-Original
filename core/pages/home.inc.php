@@ -203,8 +203,7 @@ $query = $db->query("SELECT * FROM events ORDER BY date_from ASC");
                     <div class="bg-light rounded h-100 d-flex align-items-center">
                         <div class="text-center p-5 p-md-3">
                             <h4>Ramadan Iftar Drive</h4>
-                            <p class="mt-3 mb-0">Gathering at dusk, breaking fast together, and weaving memories
-                                into every bite.</p>
+                            <p class="mt-3 mb-0">Gathering at dusk, breaking fast together, and weaving memories into every act of kindness.</p>
                             <a href="./gallery" class="btn"style="background-color : #0a1b36; color : white;">Go to Gallery</a>
                         </div>
                     </div>
