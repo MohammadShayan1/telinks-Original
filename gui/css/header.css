@@ -1,6 +1,6 @@
 /* @import url("https://fonts.googleapis.com/css?family=Lora:700");
 @import url("https://fonts.googleapis.com/css?family=Open+Sans"); */
-@import url('https://fonts.googleapis.com/css2?family=Reem+Kufi+Fun:wght@400..700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
 /* Custom Theme Colors */
 :root {
   --primary-color: #cbd0c8; /* Light Yellow */
@@ -189,7 +189,8 @@ html {
   }
 .nav ul li a{
   /* font-family: 'Montserrat', sans-serif; */
-  font-family: "Reem Kufi Fun", sans-serif;
+  font-family: "Montserrat", sans-serif;
+  font-optical-sizing: auto;
   font-size: 5vh;
   text-transform: uppercase;
   text-decoration: none;
@@ -378,7 +379,8 @@ body {
   background-color: var(--primary-color); /* Light Yellow background */
   color: var(--text-color); /* Dark Gray text color */
   /* font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; Modern font for a futuristic look */
-  font-family: "Reem Kufi Fun", sans-serif;
+  font-family: "Montserrat", sans-serif;
+  font-optical-sizing: auto;
   margin: 0;
   padding: 0;
 }
