@@ -10,7 +10,7 @@ class gui
 
     public function title()
     {
-        return "TE-Links || " . ucwords($this->page);
+        return "TE Links || " . ucwords($this->page);
     }
     public function buildPage()
     {
