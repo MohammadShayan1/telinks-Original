@@ -1,6 +1,6 @@
 /* @import url("https://fonts.googleapis.com/css?family=Lora:700");
 @import url("https://fonts.googleapis.com/css?family=Open+Sans"); */
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 /* Custom Theme Colors */
 :root {
   --primary-color: #cbd0c8; /* Light Yellow */
@@ -189,13 +189,13 @@ html {
   }
 .nav ul li a{
   /* font-family: 'Montserrat', sans-serif; */
-  font-family: "Montserrat", sans-serif;
-  font-optical-sizing: auto;
+  font-family: "Poppins", sans-serif;
+  font-weight: 400;
+  font-style: normal;
   font-size: 5vh;
   text-transform: uppercase;
   text-decoration: none;
   line-height: 1.2;
-  font-weight: 800;
   display: inline-block;
   position: relative;
   color: #1c1c1c;
@@ -379,8 +379,9 @@ body {
   background-color: var(--primary-color); /* Light Yellow background */
   color: var(--text-color); /* Dark Gray text color */
   /* font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; Modern font for a futuristic look */
-  font-family: "Montserrat", sans-serif;
-  font-optical-sizing: auto;
+  font-family: "Poppins", sans-serif;
+  font-weight: 400;
+  font-style: normal;
   margin: 0;
   padding: 0;
 }
