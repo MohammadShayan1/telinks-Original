@@ -116,13 +116,13 @@ class sql
         header('Content-Disposition: attachment; filename="olympiad_registrations.csv"');
 
         // Query to fetch data from the olympiad_registrations table
-        $query = $this->query("SELECT name, roll_no, department, email, contact_no, interest, experience, commitment, id_card, merch, rules FROM olympiad_registrations");
+        $query = $this->query("SELECT name, roll_no, department, email, contact_no, gender, interest, experience, id_card, merch, commitment, rules FROM olympiad_registrations");
 
         // Open output stream for writing the CSV data
         $output = fopen('php://output', 'w');
 
         // Output the CSV column headers
-        fputcsv($output, ['Name', 'Roll No', 'Department', 'Email', 'Contact No', 'Interest', 'Experience', 'Commitment', 'ID Card', 'Merch', 'Acknowledgement']);
+        fputcsv($output, ['Name', 'Roll No', 'Department', 'Email', 'Contact No', 'Gender', 'Interest', 'Experience', 'ID Card', 'Merch', 'Commitment', 'Acknowledgement']);
 
         // Output data rows if there are any results
         if ($this->num_rows($query) > 0) {

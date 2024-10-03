@@ -22,7 +22,7 @@ $result = $sql->query($query);
 ?>
 
 <main class="container my-5">
-    <h2 class="text-center mb-4">Admin Panel - Olympiad 2024 Responses</h2>
+    <h2 class="text-center mb-4">Olympiad 2024 Responses</h2>
 
     <!-- Download CSV Button -->
     <div class="d-flex justify-content-between mb-4">
@@ -41,6 +41,7 @@ $result = $sql->query($query);
                     <th>Department</th>
                     <th>Email</th>
                     <th>Contact No</th>
+                    <th>Gender</th>
                     <th>Interest</th>
                     <th>Experience</th>
                     <th>Commitment</th>
@@ -61,6 +62,7 @@ $result = $sql->query($query);
                     echo "<td>{$row['department']}</td>";
                     echo "<td>{$row['email']}</td>";
                     echo "<td>{$row['contact_no']}</td>";
+                    echo "<td>{$row['gender']}</td>";
                     echo "<td>{$row['interest']}</td>";
                     echo "<td>{$row['experience']}</td>";
                     echo "<td>{$row['commitment']}</td>";
