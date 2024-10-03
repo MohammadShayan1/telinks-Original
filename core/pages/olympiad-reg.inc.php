@@ -133,6 +133,16 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     <input type="text" class="form-control" name="department" placeholder="Enter your department" required>
                 </div>
 
+                
+                <div class="mb-3">
+                    <label for="email" class="form-label required-field">Email Address:</label>
+                    <input type="email" class="form-control" name="email" placeholder="Enter your email address" required>
+                </div>
+                
+                <div class="mb-3">
+                    <label for="contact_no" class="form-label required-field">Contact No:</label>
+                    <input type="text" class="form-control" name="contact_no" placeholder="Enter your contact number" required>
+                </div>
                 <div class="mb-3">
                     <label for="gender" class="form-label required-field">Gender:</label>
                     <div class="form-check">
@@ -144,17 +154,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                         <label class="form-check-label">Female</label>
                     </div>
                 </div>
-
-                <div class="mb-3">
-                    <label for="email" class="form-label required-field">Email Address:</label>
-                    <input type="email" class="form-control" name="email" placeholder="Enter your email address" required>
-                </div>
-
-                <div class="mb-3">
-                    <label for="contact_no" class="form-label required-field">Contact No:</label>
-                    <input type="text" class="form-control" name="contact_no" placeholder="Enter your contact number" required>
-                </div>
-
+                
                 <div class="mb-3">
                     <label for="interest" class="form-label required-field">Choose Game of Your Interest:</label>
                     <div class="form-check">
