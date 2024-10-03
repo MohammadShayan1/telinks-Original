@@ -10,6 +10,9 @@ $sql = new sql(); // Or however the connection is created
 // Initialize registration success flag
 $registration_success = false;
 
+// Maximum file size allowed (5 MB)
+$max_file_size = 5 * 1024 * 1024; // 5 MB in bytes
+
 // Process the form submission
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     // Input validation for form fields
@@ -35,7 +38,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if ($stmt->num_rows > 0) {
         // Email is already registered
         $_SESSION['error_message'] = 'The provided email is already registered for Olympiad 4.0.';
-        header("Location: ".$_SERVER['REQUEST_URI']);
+        header("Location: " . $_SERVER['REQUEST_URI']);
         exit();
     }
     
@@ -43,6 +46,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     // Handle file upload for ID card, saving it with the roll number as the filename
     if (isset($_FILES['id_card']) && $_FILES['id_card']['error'] === UPLOAD_ERR_OK) {
+        // Check if the file size exceeds 5 MB
+        if ($_FILES['id_card']['size'] > $max_file_size) {
+            $_SESSION['error_message'] = 'File size exceeds the maximum allowed limit of 5 MB.';
+            header("Location: " . $_SERVER['REQUEST_URI']);
+            exit();
+        }
+
         // Directory where the file will be uploaded
         $target_dir = "uploads/olympiad/";
         // Ensure the directory exists
@@ -55,7 +65,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $allowed_extensions = ['jpg', 'jpeg', 'png'];
         if (!in_array($file_extension, $allowed_extensions)) {
             $_SESSION['error_message'] = 'Invalid file type. Only JPG, JPEG, and PNG files are allowed.';
-            header("Location: ".$_SERVER['REQUEST_URI']);
+            header("Location: " . $_SERVER['REQUEST_URI']);
             exit();
         }
 
@@ -63,12 +73,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $target_file = $target_dir . $roll_no . "." . $file_extension;
         if (!move_uploaded_file($_FILES['id_card']['tmp_name'], $target_file)) {
             $_SESSION['error_message'] = 'Error uploading file.';
-            header("Location: ".$_SERVER['REQUEST_URI']);
+            header("Location: " . $_SERVER['REQUEST_URI']);
             exit();
         }
     } else {
         $_SESSION['error_message'] = 'No file uploaded or there was an upload error.';
-        header("Location: ".$_SERVER['REQUEST_URI']);
+        header("Location: " . $_SERVER['REQUEST_URI']);
         exit();
     }
 
@@ -82,13 +92,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $registration_success = true;
     } else {
         $_SESSION['error_message'] = 'Error processing your registration. Please try again later.';
-        header("Location: ".$_SERVER['REQUEST_URI']);
+        header("Location: " . $_SERVER['REQUEST_URI']);
         exit();
     }
 
     $stmt->close();
 }
 ?>
+
 
 <link rel="stylesheet" href="./gui/css/olympiad-reg.css">
 <main>
