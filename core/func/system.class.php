@@ -25,6 +25,16 @@ class sql
         }
     }
 
+    // Adding the prepare method
+    public function prepare($query)
+    {
+        if ($this->conn == null) {
+            $this->connect();
+        }
+
+        return $this->conn->prepare($query);
+    }
+
     public function query($str)
     {
         if ($this->conn == null) {
@@ -70,8 +80,6 @@ class sql
     {
         return $this->conn ? $this->conn->error : null;
     }
-
-
     function downloadNewsletterCSV()
     {
         // Set headers to force the download
@@ -101,7 +109,34 @@ class sql
         exit();
     }
 
+    function downloadOlympiadCSV()
+    {
+        // Set headers to force the download of CSV file
+        header('Content-Type: text/csv');
+        header('Content-Disposition: attachment; filename="olympiad_registrations.csv"');
 
+        // Query to fetch data from the olympiad_registrations table
+        $query = $this->query("SELECT name, roll_no, department, email, contact_no, interest, experience, commitment, id_card, merch, rules FROM olympiad_registrations");
+
+        // Open output stream for writing the CSV data
+        $output = fopen('php://output', 'w');
+
+        // Output the CSV column headers
+        fputcsv($output, ['Name', 'Roll No', 'Department', 'Email', 'Contact No', 'Interest', 'Experience', 'Commitment', 'ID Card', 'Merch', 'Acknowledgement']);
+
+        // Output data rows if there are any results
+        if ($this->num_rows($query) > 0) {
+            while ($row = $this->fetch_assoc($query)) {
+                fputcsv($output, $row); // Writing each row to CSV
+            }
+        }
+
+        // Close output stream
+        fclose($output);
+
+        // Terminate script execution after file download
+        exit();
+    }
 
     public function __destruct()
     {

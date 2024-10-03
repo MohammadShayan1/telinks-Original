@@ -1,6 +1,4 @@
 <?php
-session_start();
-
 global $sql;
 
 // Check if the user is already logged in

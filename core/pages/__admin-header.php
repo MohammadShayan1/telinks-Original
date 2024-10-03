@@ -1,6 +1,4 @@
 <?php
-session_start();
-
 // Check if the user is logged in
 if (!isset($_SESSION['admin_logged_in']) || $_SESSION['admin_logged_in'] !== true) {
     header("Location: home");
@@ -146,6 +144,11 @@ $_SESSION['last_activity'] = time();
                         <li class="nav-item">
                             <a class="nav-link" href="./admin-image-form">
                                 Gallery (Add Image)
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="./admin-olympiad">
+                                Olympiad 4.0
                             </a>
                         </li>
                         <!-- Add more links as needed -->

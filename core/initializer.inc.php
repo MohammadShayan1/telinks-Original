@@ -1,4 +1,8 @@
 <?php
+session_start();
+if (empty($_SESSION['csrf_token'])) {
+    $_SESSION['csrf_token'] = bin2hex(random_bytes(32)); // Generate a random token
+}
 if (file_exists("./core/configuration.inc.php")) {
     require_once("./core/configuration.inc.php");
 } else
@@ -19,7 +23,7 @@ if (file_exists("./core/func/helper.class.php")) {
     require_once("./core/func/helper.class.php");
 } else
     exit("<b>Helper Class not found");
-
+    
 $sql = new sql();
 $page = new gui();
 
