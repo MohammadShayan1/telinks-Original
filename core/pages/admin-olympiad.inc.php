@@ -22,7 +22,7 @@ $result = $sql->query($query);
 ?>
 
 <main class="container my-5">
-    <h2 class="text-center mb-4">Admin Panel - Olympiad 2024 Responses</h2>
+    <h2 class="text-center mb-4">Olympiad 2024 Responses</h2>
 
     <!-- Download CSV Button -->
     <div class="d-flex justify-content-between mb-4">
