@@ -113,50 +113,70 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             </div>
         <?php endif; ?>
 
-        <!-- Form container with white background -->
+        <!-- Form container with card-like structure for each field -->
         <div class="form-container">
             <form method="POST" action="" enctype="multipart/form-data" onsubmit="return validateForm()">
                 <input type="hidden" name="csrf_token" value="<?php echo $_SESSION['csrf_token']; ?>">
 
-                <div class="mb-3">
-                    <label for="name" class="form-label required-field">Full Name:</label>
-                    <input type="text" class="form-control" name="name" placeholder="Enter your full name" required>
-                </div>
-
-                <div class="mb-3">
-                    <label for="roll_no" class="form-label required-field">Roll No (e.g., TC-21022):</label>
-                    <input type="text" class="form-control" name="roll_no" placeholder="Enter your roll number" required>
-                </div>
-
-                <div class="mb-3">
-                    <label for="department" class="form-label required-field">Department:</label>
-                    <input type="text" class="form-control" name="department" placeholder="Enter your department" required>
-                </div>
-
-                
-                <div class="mb-3">
-                    <label for="email" class="form-label required-field">Email Address:</label>
-                    <input type="email" class="form-control" name="email" placeholder="Enter your email address" required>
-                </div>
-                
-                <div class="mb-3">
-                    <label for="contact_no" class="form-label required-field">Contact No:</label>
-                    <input type="text" class="form-control" name="contact_no" placeholder="Enter your contact number" required>
-                </div>
-                <div class="mb-3">
-                    <label for="gender" class="form-label required-field">Gender:</label>
-                    <div class="form-check">
-                        <input class="form-check-input" type="radio" name="gender" value="Male" required>
-                        <label class="form-check-label">Male</label>
-                    </div>
-                    <div class="form-check">
-                        <input class="form-check-input" type="radio" name="gender" value="Female" required>
-                        <label class="form-check-label">Female</label>
+                <!-- Full Name -->
+                <div class="card mb-3">
+                    <div class="card-body">
+                        <label for="name" class="form-label required-field">Full Name:</label>
+                        <input type="text" class="form-control" name="name" placeholder="Enter your full name" required>
                     </div>
                 </div>
-                
-                <div class="mb-3">
-                    <label for="interest" class="form-label required-field">Choose Game of Your Interest:</label>
+
+                <!-- Roll No -->
+                <div class="card mb-3">
+                    <div class="card-body">
+                        <label for="roll_no" class="form-label required-field">Roll No (e.g., TC-21022):</label>
+                        <input type="text" class="form-control" name="roll_no" placeholder="Enter your roll number" required>
+                    </div>
+                </div>
+
+                <!-- Department -->
+                <div class="card mb-3">
+                    <div class="card-body">
+                        <label for="department" class="form-label required-field">Department:</label>
+                        <input type="text" class="form-control" name="department" placeholder="Enter your department" required>
+                    </div>
+                </div>
+
+                <!-- Email Address -->
+                <div class="card mb-3">
+                    <div class="card-body">
+                        <label for="email" class="form-label required-field">Email Address:</label>
+                        <input type="email" class="form-control" name="email" placeholder="Enter your email address" required>
+                    </div>
+                </div>
+
+                <!-- Contact Number -->
+                <div class="card mb-3">
+                    <div class="card-body">
+                        <label for="contact_no" class="form-label required-field">Contact No:</label>
+                        <input type="text" class="form-control" name="contact_no" placeholder="Enter your contact number" required>
+                    </div>
+                </div>
+
+                <!-- Gender -->
+                <div class="card mb-3">
+                    <div class="card-body">
+                        <label for="gender" class="form-label required-field">Gender:</label>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="gender" value="Male" required>
+                            <label class="form-check-label">Male</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="gender" value="Female" required>
+                            <label class="form-check-label">Female</label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Interest -->
+                <div class="card mb-3">
+                    <div class="card-body">
+                        <label for="interest" class="form-label required-field">Choose Game of Your Interest:</label>
                     <div class="form-check">
                         <input class="form-check-input" type="checkbox" name="interest[]" value="Cricket">
                         <label class="form-check-label">Cricket</label>
@@ -198,60 +218,76 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                         <label class="form-check-label">Chess</label>
                     </div>
                 </div>
-
-                <div class="mb-3">
-                    <label for="experience" class="form-label">Past Experience in the Game:</label>
-                    <input type="text" class="form-control" name="experience" placeholder="Describe any past experience (optional)">
                 </div>
 
-                <div class="mb-3">
-                    <label for="merch" class="form-label required-field">Are You Interested in Purchasing TE Link's Merch for Olympiad?</label>
-                    <div class="form-check">
-                        <input class="form-check-input" type="radio" name="merch" value="Yes" required>
-                        <label class="form-check-label">Yes</label>
-                    </div>
-                    <div class="form-check">
-                        <input class="form-check-input" type="radio" name="merch" value="No">
-                        <label class="form-check-label">No</label>
-                    </div>
-                    <div class="form-check">
-                        <input class="form-check-input" type="radio" name="merch" value="Maybe">
-                        <label class="form-check-label">Maybe</label>
+                <!-- Experience -->
+                <div class="card mb-3">
+                    <div class="card-body">
+                        <label for="experience" class="form-label">Past Experience in the Game:</label>
+                        <input type="text" class="form-control" name="experience" placeholder="Describe any past experience (optional)">
                     </div>
                 </div>
 
-                <div class="mb-3">
-                    <label for="id_card" class="form-label required-field">Upload Your NED's ID Card Picture:</label>
-                    <input type="file" class="form-control" name="id_card" required>
-                </div>
-
-                <div class="mb-3">
-                    <label for="commitment" class="form-label required-field">Commitment:</label>
-
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" name="commitment[]" value="I commit to being available" id="commitment-checkbox1">
-                        <label class="form-check-label">I commit to being available at the scheduled times for practice sessions, qualifying rounds, and the main event.</label>
-                    </div>
-
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" name="commitment[]" id="commitment-checkbox2" value="I understand the importance of punctuality">
-                        <label class="form-check-label">I understand the importance of my punctuality and participation to avoid inconvenience to the organizing committee and fellow participants.</label>
-                    </div>
-                </div>
-
-                <div class="mb-3">
-                    <label for="rules" class="form-label required-field">Acknowledgement of Rules:</label>
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" name="rules" value="I agree to follow all rules" id="rules-checkbox">
-                        <label class="form-check-label">I hereby agree to follow all rules, regulations, and SOPs of the Olympiad while playing under TE-Links's forum. I also confirm that I will not participate in the event under any other society. Failure to comply may result in disqualification.</label>
+                <!-- Merch Interest -->
+                <div class="card mb-3">
+                    <div class="card-body">
+                        <label for="merch" class="form-label required-field">Are You Interested in Purchasing TE Link's Merch for Olympiad?</label>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="merch" value="Yes" required>
+                            <label class="form-check-label">Yes</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="merch" value="No">
+                            <label class="form-check-label">No</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="merch" value="Maybe">
+                            <label class="form-check-label">Maybe</label>
+                        </div>
                     </div>
                 </div>
 
+                <!-- ID Card Upload -->
+                <div class="card mb-3">
+                    <div class="card-body">
+                        <label for="id_card" class="form-label required-field">Upload Your NED's ID Card Picture:</label>
+                        <input type="file" class="form-control" name="id_card" required>
+                    </div>
+                </div>
+
+                <!-- Commitment -->
+                <div class="card mb-3">
+                    <div class="card-body">
+                        <label for="commitment" class="form-label required-field">Commitment:</label>
+
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" name="commitment[]" value="I commit to being available" id="commitment-checkbox1">
+                            <label class="form-check-label">I commit to being available at the scheduled times for practice sessions, qualifying rounds, and the main event.</label>
+                        </div>
+
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" name="commitment[]" id="commitment-checkbox2" value="I understand the importance of punctuality">
+                            <label class="form-check-label">I understand the importance of my punctuality and participation to avoid inconvenience to the organizing committee and fellow participants.</label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Rules Acknowledgement -->
+                <div class="card mb-3">
+                    <div class="card-body">
+                        <label for="rules" class="form-label required-field">Acknowledgement of Rules:</label>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" name="rules" value="I agree to follow all rules" id="rules-checkbox">
+                            <label class="form-check-label">I hereby agree to follow all rules, regulations, and SOPs of the Olympiad while playing under TE-Links's forum.</label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Submit Button -->
                 <div class="row">
                     <div class="d-grid">
                         <button class="btn" style="background-color : #0a1b36; color : white;" type="submit">Register</button>
                     </div>
-                </div>
             </form>
         </div>
     </div>
@@ -272,4 +308,3 @@ function validateForm() {
     return true;
 }
 </script>
-
