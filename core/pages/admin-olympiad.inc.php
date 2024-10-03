@@ -41,6 +41,7 @@ $result = $sql->query($query);
                     <th>Department</th>
                     <th>Email</th>
                     <th>Contact No</th>
+                    <th>Gender</th>
                     <th>Interest</th>
                     <th>Experience</th>
                     <th>Commitment</th>
@@ -61,6 +62,7 @@ $result = $sql->query($query);
                     echo "<td>{$row['department']}</td>";
                     echo "<td>{$row['email']}</td>";
                     echo "<td>{$row['contact_no']}</td>";
+                    echo "<td>{$row['gender']}</td>";
                     echo "<td>{$row['interest']}</td>";
                     echo "<td>{$row['experience']}</td>";
                     echo "<td>{$row['commitment']}</td>";

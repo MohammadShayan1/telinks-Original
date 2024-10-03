@@ -13,7 +13,7 @@ form input[type="checkbox"] {
 
 /* Header Styling */
 .header {
-    background-image: url('../imgs/olympiad.jpg'); /* Add your background image URL here */
+    background-image: url('../imgs/olympiadbanner.webp'); /* Add your background image URL here */
     background-size: cover;
     background-position: center;
     height: 300px;
