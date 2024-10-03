@@ -52,3 +52,7 @@ form input[type="checkbox"] {
 .form-label {
     color: var(--secondary-color) !important;
 }
+div p {
+    color: var(--secondary-color);
+    font-weight: 500;
+}

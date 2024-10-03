@@ -94,7 +94,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 <main>
     <header class="header">
         <div class="header-content">
-            <h1 class="heading font-weight-bold">OLYMPIAD 4.0</h1>
+            <h1 class="heading font-weight-bold">Olympiad 4.0 Registration</h1>
         </div>
     </header>
 
@@ -117,7 +117,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         <div class="form-container">
             <form method="POST" action="" enctype="multipart/form-data" onsubmit="return validateForm()">
                 <input type="hidden" name="csrf_token" value="<?php echo $_SESSION['csrf_token']; ?>">
-
+                <div class="container">
+                    <div class="text-center">
+                        <p>"Olympiad is a event of athleticism and camaraderie, where participants from all walks of life come together to showcase their skills in a range of sports. Whether you're an experienced athlete or a passionate newcomer, the Sports Olympiad offers a platform for friendly competition and a chance to shine in your chosen sport. Join 'TE-Links' for a day of fun, sportsmanship, and the thrill of victory!"</p>
+                    </div>
+                </div>
                 <!-- Full Name -->
                 <div class="card mb-3">
                     <div class="card-body">
