@@ -94,7 +94,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 <main>
     <header class="header">
         <div class="header-content">
-            <h1 class="heading font-weight-bold">OLYMPIAD 4.0</h1>
+            <h1 class="heading font-weight-bold">Olympiad 4.0 Registration</h1>
         </div>
     </header>
 
