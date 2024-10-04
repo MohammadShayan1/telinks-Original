@@ -35,14 +35,13 @@ $_SESSION['last_activity'] = time();
     <meta name="theme-color" content="#ffffff">
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         :root {
             --primary-color: #daddd8; /* Light Yellow */
             --secondary-color: #1c1c1c; /* Deep Blue */
             --text-color: #1c1c1c; /* Dark Gray text color for better readability */
-            --z-distance: 8.519vw;
-            --from-left: 1;
-            --mobile-bkp: 650px;
         }
 
         body {
@@ -112,54 +111,94 @@ $_SESSION['last_activity'] = time();
             font-weight: bold;
             color: #333333;
         }
+
+        /* Hamburger Menu */
+        .navbar-toggler {
+            border: none;
+        }
+
+        .navbar-toggler-icon {
+            font-size: 24px;
+        }
+
+        /* Collapsed Sidebar */
+        @media (max-width: 992px) {
+            #sidebarMenu {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background-color: #f8f9fa;
+                z-index: 1000;
+                transition: transform 0.3s ease;
+            }
+
+            .collapse.show {
+                display: block !important;
+                transform: translateX(0%);
+            }
+
+            .collapse {
+                transform: translateX(-100%);
+            }
+        }
     </style>
 </head>
 <body>
     <div class="container-fluid">
+        <!-- Navbar for hamburger menu -->
+        <nav class="navbar navbar-light bg-light d-lg-none">
+            <div class="container-fluid">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
+                    <i class="fas fa-bars navbar-toggler-icon"></i> <!-- Font Awesome hamburger icon -->
+                </button>
+            </div>
+        </nav>
+
         <div class="row">
             <!-- Sidebar -->
-            <nav class="col-md-3 col-lg-2 d-md-block bg-light sidebar">
+            <nav id="sidebarMenu" class="col-lg-2 d-lg-block bg-light sidebar collapse">
                 <div class="position-sticky pt-3">
                     <ul class="nav flex-column">
                         <li class="nav-item">
-                            <a class="nav-link " aria-current="page" href="./admin-dashboard">
-                                Dashboard
+                            <a class="nav-link" aria-current="page" href="./admin-dashboard">
+                                <i class="fas fa-home"></i> Dashboard
                             </a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="./admin-event">
-                                Event (Upcoming)
+                                <i class="fas fa-calendar-alt"></i> Event (Upcoming)
                             </a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="./regmember">
-                                Add Alumni
+                                <i class="fas fa-user-plus"></i> Add Alumni
                             </a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="./newsletter">
-                                Newsletter
+                                <i class="fas fa-newspaper"></i> Newsletter
                             </a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="./admin-image-form">
-                                Gallery (Add Image)
+                                <i class="fas fa-images"></i> Gallery (Add Image)
                             </a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="./admin-olympiad">
-                                Olympiad 4.0
+                                <i class="fas fa-trophy"></i> Olympiad 4.0
                             </a>
                         </li>
-                        <!-- Add more links as needed -->
                     </ul>
                 </div>
             </nav>
 
             <!-- Main Content -->
-            <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+            <main class="col-lg-10 ms-sm-auto px-md-4">
                 <div class="container mt-4">
                     <img src="./gui/imgs/telinkslogo.png" alt="Logo">
                     <h2><?php echo 'Welcome, ' . $_SESSION['username']; ?></h2>
                     <a href="./admin-logout" class="logout-link">Logout</a>
-                    <!-- Your additional content here -->
+
