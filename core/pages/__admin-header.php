@@ -98,10 +98,21 @@ $_SESSION['last_activity'] = time();
         }
 
         .sidebar {
-            background-color: #f8f9fa;
-            padding: 10px;
-            border-right: 1px solid #ddd;
-        }
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 250px;
+    background-color: #f8f9fa;
+    transition: all 0.3s ease;
+    z-index: 1000;
+}
+
+.show-sidebar {
+    display: block;
+}
+
 
         .sidebar .nav-link {
             color: var(--secondary-color);
