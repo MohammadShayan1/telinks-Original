@@ -44,10 +44,10 @@ $result = $sql->query($query);
                     <th>Gender</th>
                     <th>Interest</th>
                     <th>Experience</th>
-                    <th>Commitment</th>
-                    <th>ID Card</th>
                     <th>Merch Interest</th>
+                    <th>Commitment</th>
                     <th>Acknowledgement</th>
+                    <th>ID Card</th>
                     <th>Actions</th>
                 </tr>
             </thead>
@@ -65,10 +65,10 @@ $result = $sql->query($query);
                     echo "<td>{$row['gender']}</td>";
                     echo "<td>{$row['interest']}</td>";
                     echo "<td>{$row['experience']}</td>";
-                    echo "<td>{$row['commitment']}</td>";
-                    echo "<td><a href='{$row['id_card']}' target='_blank'>View ID Card</a></td>";
                     echo "<td>{$row['merch']}</td>";
+                    echo "<td>{$row['commitment']}</td>";
                     echo "<td>{$row['rules']}</td>";
+                    echo "<td><img src='{$row['id_card']}'></img></td>";
                     echo "<td>";
                     echo "<form method='POST' action=''>";
                     echo "<input type='hidden' name='delete_id' value='{$row['id']}'>";
