@@ -138,7 +138,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && $registration_open) {
             <div class="form-container">
                 <form method="POST" action="" enctype="multipart/form-data" onsubmit="return validateForm()">
                     <input type="hidden" name="csrf_token" value="<?php echo $_SESSION['csrf_token']; ?>">
-
+                    <div class="container text-center">
+                        <p>
+                        "Olympiad is a event of athleticism and camaraderie, where participants from all walks of life come together to showcase their skills in a range of sports. Whether you're an experienced athlete or a passionate newcomer, the Sports Olympiad offers a platform for friendly competition and a chance to shine in your chosen sport. Join 'TE-Links' for a day of fun, sportsmanship, and the thrill of victory!"
+                        </p>
+                    </div>
                 <!-- Full Name -->
                 <div class="card mb-3">
                     <div class="card-body">
