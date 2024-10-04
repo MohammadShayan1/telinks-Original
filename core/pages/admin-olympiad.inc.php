@@ -1,6 +1,25 @@
 <?php
+// Start output buffering to prevent "headers already sent" errors
+ob_start();
+
 // Create SQL class instance
 $sql = new sql();
+
+// Fetch registration status
+$statusQuery = "SELECT registration_open FROM settings WHERE id = 1";
+$statusResult = $sql->query($statusQuery);
+$statusRow = $sql->fetch_assoc($statusResult);
+$registrationOpen = $statusRow['registration_open'] == 1;
+
+// Handle registration toggle
+if (isset($_POST['toggle_registration'])) {
+    // Toggle the registration status
+    $newStatus = $registrationOpen ? 0 : 1;
+    $updateQuery = "UPDATE settings SET registration_open = $newStatus WHERE id = 1";
+    $sql->query($updateQuery);
+    header("Location: admin-olympiad?#regbtn");
+    exit();
+}
 
 // Check if the delete action is requested
 if (isset($_POST['delete_id'])) {
@@ -8,7 +27,6 @@ if (isset($_POST['delete_id'])) {
     $deleteQuery = "DELETE FROM olympiad_registrations WHERE id = '$id'";
     $sql->query($deleteQuery);
 
-    // Check for errors during deletion
     if ($sql->getError()) {
         echo "Error: " . $sql->getError();
     } else {
@@ -50,10 +68,24 @@ if (isset($_GET['download']) && $_GET['download'] == 'true') {
     fclose($output);
     exit();
 }
+
+// End output buffering and flush the output
+ob_end_flush();
 ?>
 
 <main class="container my-5">
-    <h2 class="text-center mb-4">Olympiad 2024 Responses</h2>
+    <h2 class="text-center mb-4">Olympiad 4.0 Responses</h2>
+
+    <!-- Toggle Registration Switch -->
+    <form method="POST" action="" class="text-center mb-4">
+        <button type="submit" id="regbtn" name="toggle_registration" class="btn btn-<?php echo !$registrationOpen ? 'success' : 'danger'; ?>">
+            <?php echo !$registrationOpen ? 'Open Registration' : 'Close Registration'; ?>
+        </button>
+    </form>
+
+    <div class="alert alert-info text-center">
+        Registration is currently <?php echo !$registrationOpen ? 'CLOSED' : 'OPEN'; ?>.
+    </div>
 
     <!-- Filter Form -->
     <form method="POST" action="">
@@ -91,12 +123,11 @@ if (isset($_GET['download']) && $_GET['download'] == 'true') {
 
     <!-- Download CSV Button -->
     <div class="mb-4 text-center">
-    <a href="./olympiadcsv?download=true" class="btn btn-primary">Download CSV</a>
+        <a href="./olympiadcsv?download=true" class="btn btn-primary">Download CSV</a>
     </div>
 
     <!-- Responsive Table Wrapper -->
     <div class="table-responsive">
-        <!-- Table to display form responses -->
         <table class="table table-bordered table-striped">
             <thead class="thead-dark">
                 <tr>
@@ -119,7 +150,6 @@ if (isset($_GET['download']) && $_GET['download'] == 'true') {
             <tbody>
                 <?php
                 $count = 1; // Initialize a manual row counter
-                // Loop through the records and display in table
                 while ($row = $sql->fetch_assoc($result)) {
                     echo "<tr>";
                     echo "<td>{$count}</td>";
