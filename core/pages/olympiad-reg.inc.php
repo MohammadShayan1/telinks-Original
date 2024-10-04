@@ -7,14 +7,20 @@ global $sql;
 // Assuming this is the SQL class you're using
 $sql = new sql(); // Or however the connection is created
 
+// Fetch the registration status
+$query = "SELECT registration_open FROM settings WHERE id = 1";
+$result = $sql->query($query);
+$row = $sql->fetch_assoc($result);
+$registration_open = $row['registration_open'];
+
 // Initialize registration success flag
 $registration_success = false;
 
 // Maximum file size allowed (5 MB)
 $max_file_size = 5 * 1024 * 1024; // 5 MB in bytes
 
-// Process the form submission
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+// Process the form submission if the registration is open
+if ($_SERVER['REQUEST_METHOD'] == 'POST' && $registration_open) {
     // Input validation for form fields
     $name = filter_input(INPUT_POST, 'name', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
     $roll_no = filter_input(INPUT_POST, 'roll_no', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
@@ -100,7 +106,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 }
 ?>
 
-
 <link rel="stylesheet" href="./gui/css/olympiad-reg.css">
 <main>
     <header class="header">
@@ -110,29 +115,30 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     </header>
 
     <div class="container my-5">
-        <!-- Display the success message if the registration was successful -->
-        <?php if ($registration_success): ?>
-            <div class="alert alert-success" role="alert">
-                Registration successful! Thank you for signing up for Olympiad 4.0.
+        <?php if (!$registration_open): ?>
+            <div class="alert alert-danger text-center" role="alert">
+                Registration is currently closed. Please check back later.
             </div>
-        <?php endif; ?>
-
-        <!-- Display error message if there's any -->
-        <?php if (isset($_SESSION['error_message'])): ?>
-            <div class="alert alert-danger" role="alert">
-                <?php echo $_SESSION['error_message']; unset($_SESSION['error_message']); ?>
-            </div>
-        <?php endif; ?>
-
-        <!-- Form container with card-like structure for each field -->
-        <div class="form-container">
-            <form method="POST" action="" enctype="multipart/form-data" onsubmit="return validateForm()">
-                <input type="hidden" name="csrf_token" value="<?php echo $_SESSION['csrf_token']; ?>">
-                <div class="container">
-                    <div class="text-center">
-                        <p>"Olympiad is a event of athleticism and camaraderie, where participants from all walks of life come together to showcase their skills in a range of sports. Whether you're an experienced athlete or a passionate newcomer, the Sports Olympiad offers a platform for friendly competition and a chance to shine in your chosen sport. Join 'TE-Links' for a day of fun, sportsmanship, and the thrill of victory!"</p>
-                    </div>
+        <?php else: ?>
+            <!-- Display the success message if the registration was successful -->
+            <?php if ($registration_success): ?>
+                <div class="alert alert-success" role="alert">
+                    Registration successful! Thank you for signing up for Olympiad 4.0.
                 </div>
+            <?php endif; ?>
+
+            <!-- Display error message if there's any -->
+            <?php if (isset($_SESSION['error_message'])): ?>
+                <div class="alert alert-danger" role="alert">
+                    <?php echo $_SESSION['error_message']; unset($_SESSION['error_message']); ?>
+                </div>
+            <?php endif; ?>
+
+            <!-- Form container with card-like structure for each field -->
+            <div class="form-container">
+                <form method="POST" action="" enctype="multipart/form-data" onsubmit="return validateForm()">
+                    <input type="hidden" name="csrf_token" value="<?php echo $_SESSION['csrf_token']; ?>">
+
                 <!-- Full Name -->
                 <div class="card mb-3">
                     <div class="card-body">
@@ -298,13 +304,15 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     </div>
                 </div>
 
-                <!-- Submit Button -->
-                <div class="row">
-                    <div class="d-grid">
-                        <button class="btn" style="background-color : #0a1b36; color : white;" type="submit">Register</button>
+                    <!-- Submit Button -->
+                    <div class="row">
+                        <div class="d-grid">
+                            <button class="btn" style="background-color: #0a1b36; color: white;" type="submit">Register</button>
+                        </div>
                     </div>
-            </form>
-        </div>
+                </form>
+            </div>
+        <?php endif; ?>
     </div>
 </main>
 
