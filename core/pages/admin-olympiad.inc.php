@@ -17,7 +17,7 @@ if (isset($_POST['toggle_registration'])) {
     $newStatus = $registrationOpen ? 0 : 1;
     $updateQuery = "UPDATE settings SET registration_open = $newStatus WHERE id = 1";
     $sql->query($updateQuery);
-    header("Location: admin-olympiad?#regbtn");
+    header('./admin-olympiad#regbtn');
     exit();
 }
 
@@ -151,6 +151,12 @@ ob_end_flush();
                 <?php
                 $count = 1; // Initialize a manual row counter
                 while ($row = $sql->fetch_assoc($result)) {
+                    // Split experience into words
+                    $experience = $row['experience'];
+                    $words = explode(' ', $experience);
+                    $firstTenWords = array_slice($words, 0, 10);
+                    $remainingWords = array_slice($words, 10);
+                    
                     echo "<tr>";
                     echo "<td>{$count}</td>";
                     echo "<td>{$row['name']}</td>";
@@ -160,7 +166,17 @@ ob_end_flush();
                     echo "<td>{$row['contact_no']}</td>";
                     echo "<td>{$row['gender']}</td>";
                     echo "<td>{$row['interest']}</td>";
-                    echo "<td>{$row['experience']}</td>";
+                    echo "<td>";
+                    if (count($words) > 10) {
+                        // Display the first 10 words with "Read more"
+                        echo implode(' ', $firstTenWords) . "... ";
+                        echo "<span class='more-text' style='display:none;'>" . implode(' ', $remainingWords) . "</span>";
+                        echo " <a href='#' class='read-more' onclick='toggleText(this); return false;'>Read more</a>";
+                    } else {
+                        // Display the full experience if less than 10 words
+                        echo $experience;
+                    }
+                    echo "</td>";
                     echo "<td>{$row['merch']}</td>";
                     echo "<td>{$row['commitment']}</td>";
                     echo "<td>{$row['rules']}</td>";
@@ -179,3 +195,17 @@ ob_end_flush();
         </table>
     </div>
 </main>
+
+<!-- JavaScript for toggling "Read more" -->
+<script>
+function toggleText(element) {
+    var moreText = element.previousElementSibling;
+    if (moreText.style.display === "none") {
+        moreText.style.display = "inline";
+        element.textContent = "Read less";
+    } else {
+        moreText.style.display = "none";
+        element.textContent = "Read more";
+    }
+}
+</script>
